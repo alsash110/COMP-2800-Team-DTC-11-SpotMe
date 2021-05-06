@@ -1,20 +1,15 @@
 <template>
-  <div class="home">
-    <!-- Display compoents here -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  </div>
+  <hello-world />
 </template>
 
 <script>
-// @ is an alias to /src
-//import components you wish to display in this view
-//import HelloWorld from '@/components/HelloWorld.vue'
+  //import HelloWorld from '../components/HelloWorld'
 
-export default {
-  name: 'Home',
-  components: {
-    //Declair components down bellow
-    //HelloWorld
+  export default {
+    name: 'Home',
+
+    components: {
+      //HelloWorld,
+    },
   }
-}
 </script>
