@@ -1,9 +1,10 @@
+<!-- This displayers button components for Matching users-->
 <template>
     <v-container>
         <v-toolbar flat>
             <v-spacer></v-spacer>
             
-            <v-btn
+            <!-- <v-btn
              color="primary"
              elevation="2"
              icon
@@ -13,9 +14,10 @@
             >
                 <v-icon>mdi-rewind</v-icon>
             </v-btn>
-            <v-spacer></v-spacer>
+            <v-spacer></v-spacer> -->
             
             <v-btn
+            @click="$emit('approve-user')"
              color="primary"
              elevation="2"
              icon
@@ -28,6 +30,7 @@
             <v-spacer></v-spacer>
             
             <v-btn
+            @click="$emit('reject-user')"
              color="primary"
              elevation="2"
              icon
@@ -44,6 +47,6 @@
 
 <script>
     export default {
-        name: "FindMatchesFooter"
+        name: "FindMatchesFooter",
     }
 </script>
