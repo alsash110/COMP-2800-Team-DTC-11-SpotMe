@@ -25,7 +25,7 @@
       color="primary"
       class="mr-4"
       @click="validate"
-      to="/MatchingUsers"
+      to="/displaymatches"
     >
       Login
     </v-btn>
