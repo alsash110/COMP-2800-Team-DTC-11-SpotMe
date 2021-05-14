@@ -1,9 +1,7 @@
 <template>
     <div class="login">
-        <br/>
         <SignupHeader/>
-            <LoginForm/>
-        <a href="../signup"><b><i>Sign up for an account now!</i></b></a>
+        <LoginForm/>
     </div>
 </template>
 
@@ -25,7 +23,7 @@
         display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80vw;
-    height: 80vw;
+    width: 100vw;
+    height: 100vw;
     }
 </style>

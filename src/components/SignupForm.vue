@@ -1,5 +1,5 @@
 <template>
-    
+    <div>
   <v-stepper v-model="e1" class="elevation-0">
     
     <h1> </h1>
@@ -54,7 +54,7 @@
           <!-- Pictures -->
         </v-stepper-step>
 
-        <v-stepper-step step="11"> 
+        <v-stepper-step step="11" editable> 
           Review
         </v-stepper-step>
 
@@ -74,6 +74,7 @@
         
         <h1 style="text-align: center">My email is...</h1>
         <v-text-field
+        rounded
       v-model="email"
       :rules="emailRules"
       label="E-mail"
@@ -96,6 +97,7 @@
 
         <h1 style="text-align: center">My phone number is...</h1>
         <v-text-field
+        rounded
       v-model="phone"
       :rules="phoneRules"
       label="Phone number"
@@ -119,6 +121,7 @@
   
            <h1 style="text-align: center">I want my password to be...</h1>
         <v-text-field
+        rounded
       v-model="password"
       :rules="passwordRules"
       label="Password"
@@ -139,6 +142,7 @@
 
            <h1 style="text-align: center">My name is...</h1>
         <v-text-field
+        rounded
       v-model="name"
       label="Full Name (First Name Followed by Last Name)"
       required
@@ -159,7 +163,7 @@
         <br/>
         
         <v-row justify="center">
-           <v-date-picker v-model="picker" :rules="ageRules"></v-date-picker>
+           <v-date-picker rounded v-model="picker" :rules="ageRules"></v-date-picker>
         </v-row>
 
         <br/>
@@ -175,12 +179,12 @@
       <v-stepper-content step="6">
 
         <h1 style="text-align: center">My sex is...</h1>
-            <v-select
+            <v-select rounded
             v-model="sex"
           :items='["Male", "Female"]'
           required
           filled
-          label="Filled style"
+          label="Sex"
         ></v-select>
 
         <v-btn
@@ -229,7 +233,7 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Expert.png?alt=media&token=8e12810e-40dc-4646-8746-b182722a1b29">
                 </v-img>
-                <v-radio v-model="picked" >
+                <v-radio v-model="picked" value="Expert">
                 Expert</v-radio>
               </div>
               </v-row>
@@ -253,6 +257,7 @@
         <h1 style="text-align: center">My preferences are...</h1>
 
           <v-select
+          rounded
           v-model="e6"
           :items='["Cardio", "PPL", "Hypertrophy","Balance","Gains","Cuts","HIIT","Gymnastics"]'
           :menu-props="{ maxHeight: '400' }"
@@ -278,9 +283,12 @@
 
         <v-textarea
           solo
+          rounded
           v-model="about"
           name="input-7-4"
           label="About me"
+          counter="100"
+          clearable
         ></v-textarea>
 
         <v-btn
@@ -299,12 +307,13 @@
         <h1 style="text-align: center">My pictures...</h1>
 
           <v-file-input
+               rounded
               :rules="rules"
               accept="image/png, image/jpeg, image/bmp"
               placeholder="Pick an avatar"
               prepend-icon="mdi-camera"
               label="Select your profile picture (*optional)"
-              counter
+              
               multiple
         ></v-file-input>
 
@@ -352,6 +361,17 @@
     </v-stepper-items>
 
   </v-stepper>
+    <v-footer color="primary lighten-3" padless>
+            <v-row justify="center" no-gutters>
+              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
+                {{ link }}
+              </v-btn>
+            <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
+              {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
+            </v-col>
+            </v-row>
+          </v-footer>
+    </div> 
 </template>
 
 
@@ -361,22 +381,28 @@
       data () {
       return {
         e1: 1,
+        links: [
+        'About Us',
+        'Learn',
+        'Support',
+      ]
+      
       }
     },
     
-    // data: () => (e1 = 1,{
+    computed: () => ({
       
-    //   valid: false,
-    //   password: '',
-    //   nameRules: [
-    //     v => !!v || 'Password is required'
-    //   ],
-    //   email: '',
-    //   emailRules: [
-    //     v => !!v || 'E-mail is required',
-    //     v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-    //   ]
-    // }),
+      valid: false,
+      password: '',
+      nameRules: [
+        v => !!v || 'Password is required'
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ]
+    }),
 
     watch: {
       steps (val) {
@@ -394,7 +420,27 @@
           this.e1 = n + 1
         }
       },
+    
+    onFileChange(item, e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+        return;
+      this.createImage(item, files[0]);
     },
+    createImage(item, file) {
+      var image = new Image();
+      var reader = new FileReader();
+
+      reader.onload = (e) => {
+        item.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    removeImage: function (item) {
+      item.image = false; 
+    }
+  }
+  
   }
 </script>
 
