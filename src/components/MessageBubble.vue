@@ -4,7 +4,6 @@
         <p
             v-if="message.user == user"
             class="user-message">
-        hello
         {{message.content}}
         </p>
         <p
