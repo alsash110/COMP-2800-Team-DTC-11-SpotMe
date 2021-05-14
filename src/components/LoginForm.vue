@@ -1,72 +1,56 @@
 <template>
-  <form>
+  <v-form
+    ref="form"
+    v-model="valid"
+    lazy-validation
+  >
+  
+
     <v-text-field
       v-model="email"
-      :error-messages="emailErrors"
+      :rules="emailRules"
       label="E-mail"
       required
-      @input="$v.email.$touch()"
-      @blur="$v.email.$touch()"
     ></v-text-field>
-    <v-text-field
+
+     <v-text-field
       v-model="password"
-      :error-messages="nameErrors"
-      :counter="10"
+      :rules="nameRules"
       label="Password"
       required
-      @input="$v.name.$touch()"
-      @blur="$v.name.$touch()"
     ></v-text-field>
 
     <v-btn
+      :disabled="!valid"
+      color="primary"
       class="mr-4"
-      @click="submit"
+      @click="validate"
     >
-      submit
+      Validate
     </v-btn>
-  </form>
+
+  </v-form>
 </template>
 
 <script>
- import { validationMixin } from 'vuelidate'
-  import { required, maxLength, email, password } from 'vuelidate/lib/validators'
-    export default {
-         
-        name: "LoginForm",
-        mixins: [validationMixin],
-        validations: {
-        password: { required },
-        email: { required, email }
-      
-    },
-
+  export default {
     data: () => ({
-      email: '',
+      valid: false,
       password: '',
+      nameRules: [
+        v => !!v || 'Password is required'
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ]
     }),
 
-    computed: {
-
-      passwordErrors () {
-        const errors = []
-        if (!this.$v.name.$dirty) return errors
-        !this.$v.name.required && errors.push('Password is required.')
-        return errors
-      },
-      emailErrors () {
-        const errors = []
-        if (!this.$v.email.$dirty) return errors
-        !this.$v.email.email && errors.push('Must be valid e-mail')
-        !this.$v.email.required && errors.push('E-mail is required')
-        return errors
-      },
-
-      methods: {
-      submit () {
-        this.$v.$touch()
+    methods: {
+      validate () {
+        this.$refs.form.validate()
       }
     },
-
-    }
-    }
+  }
 </script>

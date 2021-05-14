@@ -4,7 +4,7 @@
     <v-btn elevation="2" rounded>Home Page</v-btn>
   </v-row>
   <v-divider></v-divider>
-<div>
+</div>
 </template>
 
 <script>

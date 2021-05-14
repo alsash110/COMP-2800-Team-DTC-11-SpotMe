@@ -1,12 +1,12 @@
 <template>
-    <div class="login">
+    <div class="signup">
         <SignupHeader/>
         <SignupForm/>
     </div>
 </template>
 
 <script>
-  import SignupForm from '../components/SignupForm'
+import SignupForm from '../components/SignupForm'
   import SignupHeader from '../components/SignupHeader'
   export default {
     name: "Signup",
@@ -19,7 +19,7 @@
 
 <style>
 
-    #login {
+    #signup {
         align-content: center;
         width: 45vw;
         height: 45vw;

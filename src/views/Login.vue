@@ -1,12 +1,10 @@
 <template>
     <div class="login">
-        <h1>This is a login page</h1>
+        <h1>This is a login page </h1>
         <SignupHeader/>
         <div class="btns">
-            <LoginForm loginWith="Google"/>
-            <LoginForm loginWith="Facebook"/>
-            <LoginForm loginWith="Email"/>
-        <a href="./Signup"><b><i>Sign up for an account now!</i></b></a>
+            <LoginForm/>
+        <a href="../signup"><b><i>Sign up for an account now!</i></b></a>
         </div>
     </div>
 </template>

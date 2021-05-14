@@ -1,7 +1,8 @@
 <template>
+    
   <v-stepper v-model="e1" class="elevation-0">
     
-    
+    <h1> </h1>
     <v-stepper-header  class="elevation-0">
 
       <v-row justify="space-around" align-content="center">
