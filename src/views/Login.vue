@@ -2,6 +2,7 @@
     <div class="login">
         <SignupHeader/>
         <LoginForm/>
+        <SignupFooter/>
     </div>
 </template>
 
