@@ -1,5 +1,12 @@
 <template>
   <v-app>
+    <!-- <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+    </v-app-bar> -->
+
     <v-main>
       <router-view/>
     </v-main>
@@ -16,3 +23,11 @@ export default {
   }),
 };
 </script>
+
+<style>
+@font-face {
+  font-family: "Lato";
+  src: local("Lato"),
+   url(./fonts/Lato/Lato-Regular.ttf) format("truetype");
+}
+</style>

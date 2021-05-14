@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+<<<<<<< HEAD
     <div class="Top-Section">
              <div class="navbar">
            <v-toolbar 
@@ -17,6 +18,11 @@
     <h1>What We Are About</h1>
     <img class="company-logo" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fsuccess.png?alt=media&token=69d0e010-9474-4cd2-81aa-87c9d8f3a920" alt="Company Logo">
     <p>
+=======
+    <h1>What is SpotMe?</h1>
+    <img class="company-logo" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/beanies.png?alt=media&token=65ef3c62-9532-4573-8168-a7047050608a" alt="Company Logo">
+    <p> 
+>>>>>>> db2f47983ac1ab130b846d773498f6ace073136a
       Find the people who match your routine, experience, schedule and other preferences and train together.
       In <i>SpotMe</i>, we want people who train their physique to find friends to become better with. 
       Are you just about to begin your work out journey? Or you are a professional bodybuilder? No matter what 

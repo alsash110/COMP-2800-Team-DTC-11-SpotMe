@@ -31,6 +31,7 @@
              plain
              raised
              outlined
+             @click="goToChat"
             >
                 <v-icon>mdi-chat</v-icon>
             </v-btn>
@@ -41,6 +42,12 @@
 
 <script>
     export default {
-        name: "FindMatchesHeader"
+        name: "FindMatchesHeader",
+
+        methods: {
+            goToChat: function (event) {
+                this.$router.push('chat');
+            }
+        }
     }
 </script>
