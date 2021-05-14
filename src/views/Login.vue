@@ -1,11 +1,9 @@
 <template>
     <div class="login">
-        <h1>This is a login page </h1>
+        <br/>
         <SignupHeader/>
-        <div class="btns">
             <LoginForm/>
         <a href="../signup"><b><i>Sign up for an account now!</i></b></a>
-        </div>
     </div>
 </template>
 
@@ -29,13 +27,5 @@
     margin-right: auto;
     width: 45vw;
     height: 45vw;
-    }
-     .btns{
-        display: block;
-        padding: 5px 0px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20vw;
-    height: 20vw;
     }
 </style>

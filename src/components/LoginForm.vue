@@ -26,7 +26,7 @@
       class="mr-4"
       @click="validate"
     >
-      Validate
+      Login
     </v-btn>
 
   </v-form>
