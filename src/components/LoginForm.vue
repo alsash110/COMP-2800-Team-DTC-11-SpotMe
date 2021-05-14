@@ -21,7 +21,7 @@
     ></v-text-field>
 
     <v-btn
-      :disabled="!valid"
+    :disabled="!valid"
       color="primary"
       class="mr-4"
       @click="validate"
@@ -31,7 +31,6 @@
     </v-btn>
 
     <v-btn
-      :disabled="!valid"
       color="teal"
       class="mr-4"
       to="/Signup"
