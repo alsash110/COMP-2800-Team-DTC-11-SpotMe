@@ -23,6 +23,16 @@ const routes = [
     path: '/displayMatches',
     name: 'DisplayMatches',
     component: DisplayMatches
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import(/* webpackChunkName: "settings" */ '../views/SettingsTwo.vue')
+  },
+  {
+    path: '/editinfo',
+    name: 'EditInfo',
+    component: () => import(/* webpackChunkName: "editinfo" */ '../views/EditInfo.vue')
   }
 ]
 
