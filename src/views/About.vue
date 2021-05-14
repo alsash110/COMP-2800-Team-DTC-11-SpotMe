@@ -77,7 +77,7 @@
       links: [
         'About Us',
         'Learn',
-        'Support',
+        'Support'
       ]
     }
     }

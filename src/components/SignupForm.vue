@@ -347,7 +347,7 @@
               <v-row justify="center">
                 <v-btn
                   color="primary"
-                  to="/displaymatches"
+                  to="/mainsettings"
                   @click="submit"
                 >
                   Submit
