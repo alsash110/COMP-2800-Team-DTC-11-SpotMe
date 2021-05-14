@@ -40,16 +40,6 @@ const routes = [
     component: DisplayMatches
   },
   {
-<<<<<<< HEAD
-    path: '/settings',
-    name: 'Settings',
-    component: () => import(/* webpackChunkName: "settings" */ '../views/SettingsTwo.vue')
-  },
-  {
-    path: '/editinfo',
-    name: 'EditInfo',
-    component: () => import(/* webpackChunkName: "editinfo" */ '../views/EditInfo.vue')
-=======
     path: '/signup',
       name: 'Signup',
        component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')
@@ -58,7 +48,6 @@ const routes = [
   path: '/login',
     name: 'Login',
      component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue') 
->>>>>>> db2f47983ac1ab130b846d773498f6ace073136a
   }
   
 ]

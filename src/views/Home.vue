@@ -190,7 +190,6 @@
   gap: 80px 0px;
   grid-template-areas: inherit;
 }
-<<<<<<< HEAD
 
   .navbar-img {
     margin-top: 15px;
@@ -202,6 +201,4 @@
     margin-top: 30px;
 }
 
-=======
->>>>>>> db2f47983ac1ab130b846d773498f6ace073136a
 </style>
