@@ -25,7 +25,7 @@
         display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 45vw;
-    height: 45vw;
+    width: 80vw;
+    height: 80vw;
     }
 </style>

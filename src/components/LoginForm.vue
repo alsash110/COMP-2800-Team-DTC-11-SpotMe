@@ -25,8 +25,18 @@
       color="primary"
       class="mr-4"
       @click="validate"
+      to="/MatchingUsers"
     >
       Login
+    </v-btn>
+
+    <v-btn
+      :disabled="!valid"
+      color="teal"
+      class="mr-4"
+      to="/Signup"
+    >
+      Signup
     </v-btn>
 
   </v-form>

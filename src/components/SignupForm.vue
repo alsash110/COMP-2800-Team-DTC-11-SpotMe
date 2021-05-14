@@ -159,7 +159,7 @@
         <br/>
         
         <v-row justify="center">
-           <v-date-picker v-model="picker"></v-date-picker>
+           <v-date-picker v-model="picker" :rules="ageRules"></v-date-picker>
         </v-row>
 
         <br/>
@@ -176,7 +176,9 @@
 
         <h1 style="text-align: center">My sex is...</h1>
             <v-select
+            v-model="sex"
           :items='["Male", "Female"]'
+          required
           filled
           label="Filled style"
         ></v-select>
@@ -197,6 +199,7 @@
 <v-divider></v-divider><br/>
           <v-row justify="space-around" >
             <v-radio-group v-model="radioGroup">
+              <v-row justify="space-between">
               <div>
                 <v-img
                   lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Beginner.png?alt=media&token=162e6a3d-04b1-40da-9e9a-b26bd2b45a9e"
@@ -204,8 +207,8 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Beginner.png?alt=media&token=162e6a3d-04b1-40da-9e9a-b26bd2b45a9e">
                 </v-img>
-                <v-radio>
-                Beginner</v-radio>
+                <v-radio v-model="picked" value="Beginner">Beginner
+                </v-radio>
               </div>
 
               <div>
@@ -215,8 +218,8 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb">
                 </v-img>
-                <v-radio>
-                Experienced</v-radio>
+                <v-radio v-model="picked" value="Experienced">Experienced
+                </v-radio>
               </div>
 
               <div>
@@ -226,9 +229,10 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Expert.png?alt=media&token=8e12810e-40dc-4646-8746-b182722a1b29">
                 </v-img>
-                <v-radio>
+                <v-radio v-model="picked" >
                 Expert</v-radio>
               </div>
+              </v-row>
             </v-radio-group>
           </v-row>
 
@@ -270,10 +274,11 @@
 
       <v-stepper-content step="9">
 
-        <h1 style="text-align: center">Here's a little bit about me...</h1>
+        <h1 style="text-align: center">A little bit about me...</h1>
 
         <v-textarea
           solo
+          v-model="about"
           name="input-7-4"
           label="About me"
         ></v-textarea>
@@ -298,14 +303,16 @@
               accept="image/png, image/jpeg, image/bmp"
               placeholder="Pick an avatar"
               prepend-icon="mdi-camera"
-              label="Avatar"
-  ></v-file-input>
+              label="Select your profile picture (*optional)"
+              counter
+              multiple
+        ></v-file-input>
 
         <v-btn
           color="primary"
           @click="e1 = 11"
         >
-          Continue
+          Review
         </v-btn>
 
  
@@ -315,9 +322,23 @@
 
          <v-container>
 
+            <h3>Email : {{ email }}</h3>
+            <h3>Phone Number : {{ phone }}</h3>
+            <h3>Password : {{ password }}</h3>
+            <h3>Name : {{ name }}</h3>
+            <h3>Birthday : {{ picker }}</h3>
+            <h3>Sex : {{ sex }}</h3>
+            <h3>Experience : {{ picked }}</h3>
+            <h3>Preference : {{ preferences }}</h3>
+            <h3>About me : {{ about }}</h3>
+            <h3>Images : {{ image }}</h3>
+            
+
+
               <v-row justify="center">
                 <v-btn
                   color="primary"
+                  to="/MatchingUsers"
                   @click="submit"
                 >
                   Submit
@@ -336,11 +357,26 @@
 
 <script>
   export default {
-    data ()  {
+
+      data () {
       return {
-        e1: 1
+        e1: 1,
       }
     },
+    
+    // data: () => (e1 = 1,{
+      
+    //   valid: false,
+    //   password: '',
+    //   nameRules: [
+    //     v => !!v || 'Password is required'
+    //   ],
+    //   email: '',
+    //   emailRules: [
+    //     v => !!v || 'E-mail is required',
+    //     v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    //   ]
+    // }),
 
     watch: {
       steps (val) {
