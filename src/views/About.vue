@@ -16,13 +16,13 @@
         <DevProfile name="Eric" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ricky.png?alt=media&token=410c0936-29c9-4dbe-be1f-eb1f02c657eb"/>
       </div>
       <div class="person-3">
-        <DevProfile name="Ivan" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ivan_profile.jpg?alt=media&token=e38253cb-1064-44f9-b3c8-8b9b42875939"/>
+        <DevProfile name="Ivan" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ivan_profile.jpg?alt=media&token=4a34c75f-0a01-41fc-bdb2-ceaa16b6d644"/>
       </div>
       <div class="person-4">
         <DevProfile name="Justin" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/1123123123123.png?alt=media&token=ffda3882-b6c2-4f8b-a9dc-05d2f608efdc"/>
       </div>
       <div class="person-5">
-        <DevProfile name="Ross" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/lmao-ross.png?alt=media&token=118c1eda-2b7d-4254-8361-8eeebc85f794"/>
+        <DevProfile name="Ross" imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ross_doria.jpg?alt=media&token=cdbe3d39-b12d-422b-aa37-501d8a2efce5"/>
       </div>
     </div>
   </div>
