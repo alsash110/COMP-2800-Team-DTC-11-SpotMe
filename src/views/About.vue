@@ -11,7 +11,29 @@
             <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">SpotMe</h1>
             <v-spacer></v-spacer>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+              <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      clipped
+      right
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+
+          <v-btn elevation="0" plain to="/">Home</v-btn>
+          <v-btn elevation="0" plain to="/login">Login</v-btn>
+          <v-btn elevation="0" plain to="signup">Sign Up</v-btn>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
            </v-toolbar>   
          </div>
     <h1>What We Are About</h1>
@@ -80,8 +102,20 @@
         'Support'
       ]
     }
-    }
+    },
+
+        data: () => ({
+      drawer: false,
+      group: null,
+    }),
+
+    watch: {
+      group () {
+        this.drawer = false
+      },
+    },
   }
+
 </script>
 
 <style>

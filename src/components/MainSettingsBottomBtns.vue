@@ -9,6 +9,7 @@
              plain
              raised
              outlined
+             to="/settings"
             >
                 <v-icon>mdi-cog</v-icon>
             </v-btn>
@@ -31,6 +32,7 @@
              plain
              raised
              outlined
+             to="/editinfo"
             >
                 <v-icon>mdi-pencil</v-icon>
             </v-btn>
