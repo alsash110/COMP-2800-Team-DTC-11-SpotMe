@@ -2,7 +2,7 @@
   <div class="about">
     <h1>What is SpotMe?</h1>
     <img class="company-logo" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/beanies.png?alt=media&token=65ef3c62-9532-4573-8168-a7047050608a" alt="Company Logo">
-    <p>
+    <p> 
       Find the people who match your routine, experience, schedule and other preferences and train together.
       In <i>SpotMe</i>, we want people who train their physique to find friends to become better with. 
       Are you just about to begin your work out journey? Or you are a professional bodybuilder? No matter what 

@@ -18,7 +18,7 @@
          <div class="img-carousel">
            <div class="overlay">
             <h2>LET'S GET STARTED</h2>
-            <v-btn color="primary" elevation="2" rounded>Create Account</v-btn>
+            <v-btn color="primary" elevation="2" rounded to="/signup">Create Account</v-btn>
            </div>
            <v-carousel cycle height="400" hide-delimiter-background :show-arrows="false">
              <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src">
@@ -119,28 +119,21 @@
       }
     },
   }
-
 </script>
 <style>
-
-
 .Top-Section {
   grid-area: Top-Section;
 }
-
 .Mid-Section {
   grid-area: Mid-Section;
   /* background-color: rgb(216, 236, 245); */
 }
-
 .Mid-Section h2 {
   text-align: center;
 }
-
 .Bottom-Section {
   grid-area: Bottom-Section;
 }
-
 .Mid-Section {
   display: grid;
   grid-template-columns: 1fr;
@@ -148,7 +141,6 @@
   gap: 0px 0px;
   grid-template-areas: inherit;
 }
-
 /* .container {
   display: grid;
   grid-template-columns: 1fr;
@@ -159,7 +151,6 @@
     "Mid-Section"
     "Bottom-Section";
 } */
-
 .img-carousel {
   display: grid;
   grid-template-columns: 1fr;
@@ -169,35 +160,29 @@
     "."
     "overlay";
 }
-
 .overlay {
   grid-area: overlay;
 }
-
 .overlay {
   text-align: center;
   margin-top: -200px;
   z-index: 3;
 }
-
 .overlay h2 {
   font-size: 25px;
   color: white;
   font-weight: 450;
 }
-
 .p1 h1 {
   font-size: 30px;
   font-weight: 300;
   text-align: center;
   margin-top: 50px;
 }
-
 .p2 p {
   font-size: 20px;
   text-align: center;
 }
-
 .user-cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -205,5 +190,4 @@
   gap: 80px 0px;
   grid-template-areas: inherit;
 }
-
 </style>
