@@ -197,7 +197,7 @@
 <v-divider></v-divider><br/>
           <v-row justify="space-around" >
             <v-radio-group v-model="radioGroup">
-              <v-col>
+              <div>
                 <v-img
                   lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Beginner.png?alt=media&token=162e6a3d-04b1-40da-9e9a-b26bd2b45a9e"
                   max-height="150"
@@ -206,9 +206,9 @@
                 </v-img>
                 <v-radio>
                 Beginner</v-radio>
-              </v-col>
+              </div>
 
-              <v-col>
+              <div>
                 <v-img
                   lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb"
                   max-height="150"
@@ -217,9 +217,9 @@
                 </v-img>
                 <v-radio>
                 Experienced</v-radio>
-              </v-col>
+              </div>
 
-              <v-col>
+              <div>
                 <v-img
                   lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Expert.png?alt=media&token=8e12810e-40dc-4646-8746-b182722a1b29"
                   max-height="150"
@@ -228,8 +228,8 @@
                 </v-img>
                 <v-radio>
                 Expert</v-radio>
-              </v-col>
-        </v-radio-group>
+              </div>
+            </v-radio-group>
           </v-row>
 
           <br/>
