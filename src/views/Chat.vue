@@ -1,5 +1,6 @@
 <template>
     <v-app class="lato-font">
+        <FindMatchesHeader></FindMatchesHeader>
         <!-- <v-container v-on:scroll="onScroll" ref="chatlistContainer"> -->
         <v-container>
             <v-row no-gutters>
@@ -32,11 +33,13 @@
 <script>
     import ChatRow from '../components/ChatRow'
     import Footer from '../components/FooterJY'
+    import FindMatchesHeader from '../components/FindMatchesHeader'
     
     export default {
         name: 'Chat',
 
         components: {
+            FindMatchesHeader,
             ChatRow,
             Footer
         },
