@@ -16,6 +16,7 @@
 
      <v-text-field
       v-model="password"
+      :type="passwor"
       :rules="nameRules"
       label="Password"
       required
@@ -41,7 +42,7 @@
 
   </v-form>
 
-   <v-footer color="primary lighten-3" padless>
+     <v-footer color="primary lighten-3" padless>
             <v-row justify="center" no-gutters>
               <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
                 {{ link }}

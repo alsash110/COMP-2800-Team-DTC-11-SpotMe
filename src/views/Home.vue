@@ -9,7 +9,7 @@
            <template v-slot:img="{ props }">
              <v-img v-bind="props" gradient="to bottom left, #59ABF8, #84BDF2"></v-img>
            </template>
-            <img width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
+            <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">SpotMe</h1>
             <v-spacer></v-spacer>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -190,4 +190,15 @@
   gap: 80px 0px;
   grid-template-areas: inherit;
 }
+
+  .navbar-img {
+    margin-top: 15px;
+}
+
+.navbar h1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
 </style>

@@ -6,6 +6,7 @@ import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Message from '../views/Message.vue'
 import DisplayMatches from '../views/DisplayMatches.vue'
+import mainsettings from '../views/mainsettings.vue'
 
 Vue.use(VueRouter)
 
@@ -40,14 +41,19 @@ const routes = [
     component: DisplayMatches
   },
   {
-    path: '/signup',
-      name: 'Signup',
-       component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')
-    },
+    path: '/mainsettings',
+    name: 'mainsettings',
+    component: mainsettings
+  },
   {
-  path: '/login',
+    path: '/signup',
+    name: 'Signup',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Signup.vue')
+  },
+  {
+    path: '/login',
     name: 'Login',
-     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue') 
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
   }
   
 ]
