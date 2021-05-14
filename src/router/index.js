@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Chat from '../views/Chat.vue'
 import Message from '../views/Message.vue'
+import DisplayMatches from '../views/DisplayMatches.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,11 @@ const routes = [
     component: Message,
     props: true,
   },
+  {
+    path: '/displayMatches',
+    name: 'DisplayMatches',
+    component: DisplayMatches
+  }
 ]
 
 const router = new VueRouter({
