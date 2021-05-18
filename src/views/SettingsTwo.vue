@@ -10,7 +10,7 @@
             <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">Settings</h1>
             <v-spacer></v-spacer>
-            <v-btn class="nav-btn" color="primary" rounded>Done</v-btn>
+            <v-btn class="nav-btn" color="primary" rounded to="/mainsettings">Done</v-btn>
            </v-toolbar>   
          </div>
            <div class="Mid-Section">
@@ -44,11 +44,12 @@
                     <v-subheader class="outline">
                         Privacy Settings
                     </v-subheader>
+                    <v-divider></v-divider>
                 </v-list>
             </div>
         </div>
     <div class="footer">
-          <v-footer color="primary lighten-3" padless>
+          <v-footer color="primary lighten-3" padless fixed>
             <v-row justify="center" no-gutters>
               <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
                 {{ link }}

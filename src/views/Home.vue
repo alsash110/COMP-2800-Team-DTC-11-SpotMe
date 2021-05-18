@@ -12,7 +12,7 @@
             <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">SpotMe</h1>
             <v-spacer></v-spacer>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-btn class="nav-btn" color="primary" to="/login" rounded>Login</v-btn>
            </v-toolbar>   
          </div>
          <div class="img-carousel">
@@ -82,7 +82,7 @@
         <div class="footer">
           <v-footer color="primary lighten-3" padless>
             <v-row justify="center" no-gutters>
-              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
+              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2" to="/about">
                 {{ link }}
               </v-btn>
             <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
@@ -199,6 +199,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
+}
+
+.nav-btn {
+  margin-top:35px;
 }
 
 </style>

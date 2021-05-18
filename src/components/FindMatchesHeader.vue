@@ -9,6 +9,7 @@
              plain
              raised
              outlined
+             to="/displaymatches"
             >
                 <v-icon>mdi-account-supervisor</v-icon>
             </v-btn>
@@ -20,6 +21,7 @@
              plain
              raised
              outlined
+             to="/mainsettings"
             >
                 <v-icon>mdi-home</v-icon>
             </v-btn>

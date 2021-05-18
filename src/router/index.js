@@ -7,6 +7,8 @@ import Login from '../views/Login.vue'
 import Message from '../views/Message.vue'
 import DisplayMatches from '../views/DisplayMatches.vue'
 import mainsettings from '../views/mainsettings.vue'
+import Settings from '../views/SettingsTwo.vue'
+import EditInfo from '../views/EditInfo.vue'
 
 Vue.use(VueRouter)
 
@@ -54,8 +56,17 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: Settings
+  },
+  {
+    path: '/editinfo',
+    name: 'editinfo',
+    component: EditInfo
   }
-  
 ]
 
 const router = new VueRouter({

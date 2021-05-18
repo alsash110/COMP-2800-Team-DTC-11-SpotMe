@@ -19,7 +19,7 @@
     </div>
     <div class="Bottom-Section">
       <div class="footer">
-        <v-footer color="primary lighten-3" padless>
+        <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
             <v-btn
               v-for="link in links"
