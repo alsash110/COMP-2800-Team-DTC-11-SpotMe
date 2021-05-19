@@ -25,13 +25,13 @@
 
                             <div
                              v-else class="tagGroup" 
-                             v-for="tag in user.tags" 
-                             :key="tag"
+                             v-for="preference in user.tags" 
+                             :key="preference"
                             >
                                 <v-chip
                                  color="blue"
                                 >
-                                    <span class="tag">{{tag}}</span>
+                                    <span class="tag">{{preference}}</span>
                                 </v-chip>
                             </div>
                         </v-col>
