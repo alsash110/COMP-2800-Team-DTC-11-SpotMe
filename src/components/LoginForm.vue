@@ -64,10 +64,10 @@
 <script>
   import { required, email } from 'vee-validate/dist/rules'
   import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
-  import * as firebase from "firebase/app"
+  import firebase from "firebase/app"
 
 
- 
+  
   setInteractionMode('eager')
 
   extend('required', {
@@ -94,9 +94,9 @@
      async submit () {
         this.$refs.observer.validate()
         try{
-          const val = await firebase
+          const val = await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
           console.log(val);
-          this.$router.repalce({name:"mainsettings"});
+          this.$router.push({name:"mainsettings"});
         }
         catch(err){
           console.log(err);

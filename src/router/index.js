@@ -11,8 +11,9 @@ import mainsettings from '../views/mainsettings.vue'
 import Settings from '../views/SettingsTwo.vue'
 import EditInfo from '../views/EditInfo.vue'
 
-import * as firebase from "firebase/app"
-import "firebase/auth"
+
+import firebase from "firebase/app"
+import { auth } from '@/main'
 
 
 Vue.use(VueRouter)
@@ -32,26 +33,26 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     component: Chat,
-    meta: {requiresAuth: true}
+  //  meta: {requiresAuth: true}
   },
   {
     path: '/message/:id',
     name: 'Message',
     component: Message,
     props: true,
-    meta: {requiresAuth: true}
+   // meta: {requiresAuth: true}
   },
   {
     path: '/displayMatches',
     name: 'DisplayMatches',
     component: DisplayMatches,
-    meta: {requiresAuth: true}
+   // meta: {requiresAuth: true}
   },
   {
     path: '/mainsettings',
     name: 'mainsettings',
     component: mainsettings,
-    meta: {requiresAuth: true}
+   // meta: {requiresAuth: true}
   },
   {
     path: '/signup',
@@ -67,13 +68,13 @@ const routes = [
     path: '/settings',
     name: 'settings',
     component: Settings,
-    meta: {requiresAuth: true}
+ //   meta: {requiresAuth: true}
   },
   {
     path: '/editinfo',
     name: 'editinfo',
     component: EditInfo,
-    meta: {requiresAuth: true}
+   // meta: {requiresAuth: true}
   }
 ]
 
@@ -81,16 +82,30 @@ const router = new VueRouter({
   routes
 })
 
+console.log("we're here")
+
+
+
 // THIS BREAKS EVERYTHING
 // router.beforeEach((to, from, next) => {
-//   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-//   const isAuthenticated = firebase.auth().currentUser;
-//   console.log("isauthenticated", isAuthenticated);
-//   if (requiresAuth && !isAuthenticated) {
-//     next("/login");
-//   } else {
-//     next();
+//   if (!from.meta){
+//     console.log("I don't require auth")
+//     next()
 //   }
+//   else{
+//     if (to.name !== 'Login' && !isAuthenticated ) next({ name: 'Login' })
+//     else next()
+//   }
+  
+
+//   // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+//   // const isAuthenticated = auth().currentUser;
+//   // console.log("isauthenticated", isAuthenticated);
+//   // if (requiresAuth && !isAuthenticated) {
+//   //   next("/login");
+//   // } else {
+//   //   next();
+  
 // });
 
 
