@@ -91,16 +91,18 @@
     }),
 
     methods: {
-     async submit () {
+      submit () {
         this.$refs.observer.validate()
-        try{
-          const val = await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
-          console.log(val);
-          this.$router.push({name:"mainsettings"});
-        }
-        catch(err){
-          console.log(err);
-        }
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(data => {
+        this.$router.replace({ name: "mainsettings" });
+      })
+      .catch(err => {
+        this.error = err.message;
+        alert(err.message);
+      });
         
       }
     },

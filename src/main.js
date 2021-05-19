@@ -22,6 +22,16 @@ export const db = firebase.firestore()
 
 Vue.config.productionTip = false
 
+firebase.auth().onAuthStateChanged(function (user){
+  if(user){
+    console.log(user.email);
+  }
+  else{
+    console.log("not signed in");
+  }
+});
+
+
 // firebase.auth().onAuthStateChanged(user => {
 //   console.log("user", user);
 //   if (!app) {

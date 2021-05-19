@@ -13,7 +13,7 @@ import EditInfo from '../views/EditInfo.vue'
 
 
 import firebase from "firebase/app"
-import { auth } from '@/main'
+
 
 
 Vue.use(VueRouter)
@@ -33,26 +33,26 @@ const routes = [
     path: '/chat',
     name: 'Chat',
     component: Chat,
-  //  meta: {requiresAuth: true}
+   meta: {requiresAuth: true}
   },
   {
     path: '/message/:id',
     name: 'Message',
     component: Message,
     props: true,
-   // meta: {requiresAuth: true}
+   meta: {requiresAuth: true}
   },
   {
     path: '/displayMatches',
     name: 'DisplayMatches',
     component: DisplayMatches,
-   // meta: {requiresAuth: true}
+   meta: {requiresAuth: true}
   },
   {
     path: '/mainsettings',
     name: 'mainsettings',
     component: mainsettings,
-   // meta: {requiresAuth: true}
+  meta: {requiresAuth: true}
   },
   {
     path: '/signup',
@@ -68,13 +68,13 @@ const routes = [
     path: '/settings',
     name: 'settings',
     component: Settings,
- //   meta: {requiresAuth: true}
+   meta: {requiresAuth: true}
   },
   {
     path: '/editinfo',
     name: 'editinfo',
     component: EditInfo,
-   // meta: {requiresAuth: true}
+   meta: {requiresAuth: true}
   }
 ]
 
@@ -82,9 +82,10 @@ const router = new VueRouter({
   routes
 })
 
-console.log("we're here")
+console.log("we're here. router meesage");
 
 
+//console.log(firebase.auth().currentUser)
 
 // THIS BREAKS EVERYTHING
 // router.beforeEach((to, from, next) => {
@@ -98,14 +99,14 @@ console.log("we're here")
 //   }
   
 
-//   // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-//   // const isAuthenticated = auth().currentUser;
-//   // console.log("isauthenticated", isAuthenticated);
-//   // if (requiresAuth && !isAuthenticated) {
-//   //   next("/login");
-//   // } else {
-//   //   next();
-  
+  // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  // const isAuthenticated = firenase.auth().currentUser;
+  // console.log("isauthenticated", isAuthenticated);
+  // if (requiresAuth && !isAuthenticated) {
+  //   next("/login");
+  // } else {
+  //   next();
+  // }
 // });
 
 
