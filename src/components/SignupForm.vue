@@ -50,11 +50,7 @@
           <!-- About me -->
         </v-stepper-step>
 
-        <v-stepper-step step="10" :complete="e1 > 10" editable>
-          <!-- Pictures -->
-        </v-stepper-step>
-
-        <v-stepper-step step="11" editable> 
+        <v-stepper-step step="10" editable> 
           Review
         </v-stepper-step>
 
@@ -158,7 +154,7 @@
       </v-stepper-content>
 
       <v-stepper-content step="5">
-        
+        <v-container id="bday">
         <h1 style="text-align: center">My Birthday is...</h1>
         <br/>
         
@@ -173,6 +169,7 @@
         >
           Continue
         </v-btn>
+        </v-container>
  
       </v-stepper-content>
 
@@ -295,39 +292,14 @@
           color="primary"
           @click="e1 = 10"
         >
-          Continue
-        </v-btn>
-
- 
- 
-      </v-stepper-content>
-
-      <v-stepper-content step="10">
-
-        <h1 style="text-align: center">My pictures...</h1>
-
-          <v-file-input
-               rounded
-              :rules="rules"
-              accept="image/png, image/jpeg, image/bmp"
-              placeholder="Pick an avatar"
-              prepend-icon="mdi-camera"
-              label="Select your profile picture (*optional)"
-              
-              multiple
-        ></v-file-input>
-
-        <v-btn
-          color="primary"
-          @click="e1 = 11"
-        >
           Review
         </v-btn>
 
  
+ 
       </v-stepper-content>
 
-       <v-stepper-content step="11">
+       <v-stepper-content step="10">
 
          <v-container>
 
@@ -340,9 +312,6 @@
             <h3>Experience : {{ picked }}</h3>
             <h3>Preference : {{ preferences }}</h3>
             <h3>About me : {{ about }}</h3>
-            <h3>Images : {{ image }}</h3>
-            
-
 
               <v-row justify="center">
                 <v-btn
@@ -368,16 +337,24 @@
 
 
 <script>
+
+  import * as firebase from 'firebase/app'
+
   export default {
 
       data () {
       return {
         e1: 1,
-        links: [
-        'About Us',
-        'Learn',
-        'Support',
-      ]
+        email:'',
+        password:'',
+        name:'',
+        phone:'',
+        birthday:'',
+        sex:'',
+        experience:'',
+        preferences:'',
+        about:'',
+      
       
       }
     },
@@ -412,36 +389,27 @@
           this.e1 = n + 1
         }
       },
-    
-    onFileChange(item, e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
-      this.createImage(item, files[0]);
-    },
-    createImage(item, file) {
-      var image = new Image();
-      var reader = new FileReader();
-
-      reader.onload = (e) => {
-        item.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function (item) {
-      item.image = false; 
-    }
+      // async submit(){
+      //   try{
+      //         const user = firebase.auth().createUserWithEmailAndPassword(this.email,this.password);
+      //          firebase.
+      //   }
+      //   catch(err){
+      //     alert(err.message());
+      //   }
+        
+      }
   }
   
-  }
+  //}
 </script>
 
 <style>
 
   
 
-  .step{
-    width: 5%;
+  #bday{
+    height: 80vh;
   }
 
 </style>

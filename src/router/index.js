@@ -29,23 +29,27 @@ const routes = [
   {
     path: '/chat',
     name: 'Chat',
-    component: Chat
+    component: Chat,
+    meta:{requiresAuth: true}
   },
   {
     path: '/message/:id',
     name: 'Message',
     component: Message,
     props: true,
+    meta:{requiresAuth: true}
   },
   {
     path: '/displayMatches',
     name: 'DisplayMatches',
-    component: DisplayMatches
+    component: DisplayMatches,
+    meta:{requiresAuth: true}
   },
   {
     path: '/mainsettings',
     name: 'mainsettings',
-    component: mainsettings
+    component: mainsettings,
+    meta:{requiresAuth: true}
   },
   {
     path: '/signup',
@@ -60,12 +64,14 @@ const routes = [
   {
     path: '/settings',
     name: 'settings',
-    component: Settings
+    component: Settings,
+    meta:{requiresAuth: true}
   },
   {
     path: '/editinfo',
     name: 'editinfo',
-    component: EditInfo
+    component: EditInfo,
+    meta:{requiresAuth: true}
   }
 ]
 
