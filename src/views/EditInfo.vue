@@ -16,27 +16,77 @@
            <div class="Mid-Section">
             <div class="usersettings">
                 <h1>Info Settings</h1>
-                <v-list>
-                    <v-subheader class="outline">
-                        Name
-                    </v-subheader>
-                    <v-divider></v-divider>
-                    <v-subheader class="outline">
-                        Age
-                    </v-subheader>
-                    <v-divider></v-divider>
-                    <v-subheader class="outline">
-                        Gender
-                    </v-subheader>
-                    <v-divider></v-divider>
-                    <v-subheader class="outline">
-                        Bio
-                    </v-subheader>
-                    <v-divider></v-divider>
-                    <v-subheader class="outline">
-                        Interest Tags
-                    </v-subheader>
-                </v-list>
+                <v-expansion-panels>
+    <v-expansion-panel>
+      <v-expansion-panel-header>
+        <template v-slot:default="{ open }">
+          <v-row no-gutters>
+            <v-col cols="4">
+              Phone Number
+            </v-col>
+            <v-col
+              cols="8"
+              class="text--secondary"
+            >
+              <v-fade-transition leave-absolute>
+                <span
+                  v-if="open"
+                  key="0"
+                >
+                </span>
+                <span
+                  v-else
+                  key="1"
+                >
+                </span>
+              </v-fade-transition>
+            </v-col>
+          </v-row>
+        </template>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-text-field
+          v-model="trip.name"
+          placeholder="Change your phone number!"
+        ></v-text-field>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+
+       <v-expansion-panel>
+      <v-expansion-panel-header>
+        <template v-slot:default="{ open }">
+          <v-row no-gutters>
+            <v-col cols="4">
+                Email
+            </v-col>
+            <v-col
+              cols="8"
+              class="text--secondary"
+            >
+              <v-fade-transition leave-absolute>
+                <span
+                  v-if="open"
+                  key="0"
+                >
+                </span>
+                <span
+                  v-else
+                  key="1"
+                >
+                </span>
+              </v-fade-transition>
+            </v-col>
+          </v-row>
+        </template>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+        <v-text-field
+          v-model="trip.name"
+          placeholder="Change your email!"
+        ></v-text-field>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+  </v-expansion-panels>
             </div>
         </div>
     <div class="footer">
@@ -57,19 +107,16 @@
 <script>
   import DevProfile from '../components/DevProfile'
   export default {
-    name: "About",
-    components: {
-      DevProfile
-    },
-    data () {
-      return {
-      links: [
-        'About Us',
-        'Learn',
-        'Support',
-      ]
-    }
-    }
+    data: () => ({
+      date: null,
+      trip: {
+        name: '',
+        location: null,
+        start: null,
+        end: null,
+      },
+    }),
+    
   }
 </script>
 

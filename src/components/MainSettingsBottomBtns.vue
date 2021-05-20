@@ -21,6 +21,7 @@
              plain
              raised
              outlined
+             to="/addphotos"
             >
                 <v-icon>mdi-camera</v-icon>
             </v-btn>
