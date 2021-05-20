@@ -81,7 +81,6 @@
         <v-btn
           color="primary"
           @click="e1 = 2"
-          :disabled="invalid"
         >
           Continue
         </v-btn>
@@ -149,6 +148,7 @@
         <v-btn
           color="primary"
           @click="e1 = 5"
+          :disabled='valid'
         >
           Continue
         </v-btn>
@@ -320,7 +320,6 @@
               <v-row justify="center">
                 <v-btn
                   color="primary"
-                  to="/mainsettings"
                   @click="submit"
                 >
                   Submit
@@ -343,7 +342,7 @@
 <script>
 
 import firebase from "firebase/app"
-import { db } from "@/main"
+import  {db}  from "@/main"
 
 
   export default {
@@ -357,6 +356,8 @@ import { db } from "@/main"
       age:'2000-12-31',
       sex:'Male',
       experience:'',
+      preferences: [],
+      about:'',
       passwordRules: [
         v => !!v || 'Password is required',
         v => v.length <= 6 || 'Password must be at least 6 characters long'
@@ -407,10 +408,26 @@ import { db } from "@/main"
       },
       
       submit(){
-        this.$refs.validate()
-        // firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userData) => {
-        //   if(userData.email in db.collections)
-        // })
+        firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userCred) => {
+           db.collections("users").doc(userCred.user.uid).set({
+             email: this.email,
+             password: this.password,
+             phone_number: this.phone,
+             name: this.name,
+             sex: this.sex,
+             age: this.age,
+             preferences: this.arrayToMap(this.preferences),
+             experience: this.experienceToString(this.experience),
+             quote: this.about,
+             photos: []
+           })
+           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
+        this.$router.replace({ name: "mainsettings" });
+        }).catch( (err) => {
+          alert(err.message)
+        })
+        
+      })
       },
 
       arrayToMap(array){
@@ -420,9 +437,21 @@ import { db } from "@/main"
         });
         console.log(newMap);
         return newMap;
+      },
+
+      experienceToString(exp){
+        if(exp == 0){
+          return "Beginner"
+        }
+        else if(exp == 1){
+          return "Experienced"
+        }
+        else{
+          return "Expert"
+        }
       }
-    
-  }
+      }
+  
   
   }
 </script>
