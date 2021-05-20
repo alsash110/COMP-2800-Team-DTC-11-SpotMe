@@ -2,17 +2,20 @@
     <div class="login">
         <SignupHeader/>
         <LoginForm/>
+        <SignupFooter/>
     </div>
 </template>
 
 <script>
   import LoginForm from '../components/LoginForm'
   import SignupHeader from '../components/SignupHeader'
+//   import SignupFooter from '../components/SignupFooter'
   export default {
     name: "Login",
     components: {
         LoginForm,
-        SignupHeader
+        SignupHeader 
+        // SignupFooter
     }
   }
 </script>

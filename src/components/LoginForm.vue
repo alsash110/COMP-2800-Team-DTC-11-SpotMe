@@ -1,5 +1,5 @@
 <template>
-  <div>
+<div>
   <v-form
     ref="form"
     v-model="valid"
@@ -16,6 +16,7 @@
 
      <v-text-field
       v-model="password"
+      :type="passwor"
       :rules="nameRules"
       label="Password"
       required
@@ -40,6 +41,7 @@
     </v-btn>
 
   </v-form>
+<<<<<<< HEAD
   <v-footer color="primary lighten-3" padless fixed >
             <v-row justify="center" no-gutters>
               <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
@@ -51,6 +53,12 @@
             </v-row>
     </v-footer>
     </div>
+=======
+
+   <v-footer height="80px" class="blue-rectangle" color="#97CAFA" fixed>
+        </v-footer>
+          </div>
+>>>>>>> 16d19d86c329b967081f3922e3f1b5fb55326b80
 </template>
 
 <script>
