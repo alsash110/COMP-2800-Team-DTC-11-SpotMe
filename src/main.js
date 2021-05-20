@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 firebase.initializeApp({
   apiKey: "AIzaSyBfmIAGUvMVLnGM_FV_dthp-z7p7XWAopo",
@@ -17,7 +18,30 @@ firebase.initializeApp({
 
 export const db = firebase.firestore()
 
+
+
 Vue.config.productionTip = false
+
+firebase.auth().onAuthStateChanged(function (user){
+  if(user){
+    console.log("LOGGED IN "+user.uid);
+  }
+  else{
+    console.log("not signed in");
+  }
+});
+
+
+// firebase.auth().onAuthStateChanged(user => {
+//   console.log("user", user);
+//   if (!app) {
+//     app = new Vue({
+//       router,
+//       store,
+//       render: h => h(App)
+//     }).$mount("#app");
+//   }
+// });
 
 new Vue({
   router,
