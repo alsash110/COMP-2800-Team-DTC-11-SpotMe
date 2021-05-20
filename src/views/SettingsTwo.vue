@@ -20,6 +20,13 @@
                     <v-subheader class="outline">
                         Phone Number
                     </v-subheader>
+                    <!--added transition-->
+                    <v-fade-transition leave-absolute>
+                      <span v-if="open" key="0">
+                        Enter your mobile number
+                      </span>
+                      <span v-else key="1">
+                        {{phone.number}}
                     <v-divider></v-divider>
                     <v-subheader class="outline">
                         Email
@@ -64,55 +71,51 @@
 </template>
 
 <script>
-  import DevProfile from '../components/DevProfile'
-  export default {
-    name: "About",
-    components: {
-      DevProfile
-    },
-    data () {
-      return {
-      links: [
-        'About Us',
-        'Learn',
-        'Support',
-      ]
-    }
-    }
-  }
+import DevProfile from "../components/DevProfile";
+export default {
+  name: "About",
+  components: {
+    DevProfile,
+  },
+  data() {
+    return {
+      links: ["About Us", "Learn", "Support"],
+    };
+  },
+};
 </script>
 
 <style>
 .navbar h1 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
 }
 
 .navbar h1 {
-    margin-left: 40px;
-    margin-top: 30px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 
 .nav-btn {
-    margin-top: 35px;
+  margin-top: 35px;
 }
 
 .navbar-img {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .Mid-Section {
-    background-color: rgba(196, 196, 196, 0.3);
+  background-color: rgba(196, 196, 196, 0.3);
 }
 
 .Mid-Section h1 {
-    font-size: 15px;
-    font-weight: normal;
-    padding: 3vh;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 3vh;
 }
 
 .Mid-Section img {
-    margin: auto;
+  margin: auto;
 }
 </style>

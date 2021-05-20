@@ -18,7 +18,7 @@
       <MainSettingsBottomBtns />
     </div>
     <div class="Bottom-Section">
-      <div class="footer">
+      <!--<div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
             <v-btn
@@ -39,7 +39,8 @@
             </v-col>
           </v-row>
         </v-footer>
-      </div>
+      </div> -->
+      <SettingsFooter />
     </div>
   </div>
 </template>
@@ -47,11 +48,13 @@
 <script>
 import FindMatchesHeader from "../components/FindMatchesHeader";
 import MainSettingsBottomBtns from "../components/MainSettingsBottomBtns";
+import SettingsFooter from "../components/SettingsFooter";
 export default {
   name: "MainSettingsPage",
   components: {
     FindMatchesHeader,
     MainSettingsBottomBtns,
+    SettingsFooter
   },
   data() {
     return {
