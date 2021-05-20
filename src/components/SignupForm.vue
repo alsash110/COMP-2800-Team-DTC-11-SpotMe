@@ -50,11 +50,7 @@
           <!-- About me -->
         </v-stepper-step>
 
-        <v-stepper-step step="10" :complete="e1 > 10" editable>
-          <!-- Pictures -->
-        </v-stepper-step>
-
-        <v-stepper-step step="11" editable> 
+        <v-stepper-step step="10" editable> 
           Review
         </v-stepper-step>
 
@@ -85,6 +81,7 @@
         <v-btn
           color="primary"
           @click="e1 = 2"
+          :disabled="invalid"
         >
           Continue
         </v-btn>
@@ -144,6 +141,7 @@
         <v-text-field
         rounded
       v-model="name"
+      :rules="nameRules"
       label="Full Name (First Name Followed by Last Name)"
       required
     ></v-text-field>
@@ -156,14 +154,14 @@
         </v-btn>
 
       </v-stepper-content>
-
+ <v-container id="bday">
       <v-stepper-content step="5">
-        
-        <h1 style="text-align: center">My Birthday is...</h1>
+       
+        <h1 style="text-align: center" :show-current="false">My Birthday is...</h1>
         <br/>
         
         <v-row justify="center">
-           <v-date-picker rounded v-model="picker" :rules="ageRules"></v-date-picker>
+           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date().toISOString().substr(0, 10)"></v-date-picker>
         </v-row>
 
         <br/>
@@ -175,7 +173,7 @@
         </v-btn>
  
       </v-stepper-content>
-
+</v-container>
       <v-stepper-content step="6">
 
         <h1 style="text-align: center">My sex is...</h1>
@@ -202,7 +200,7 @@
         <h1 style="text-align: center">My level of experience is...</h1>
 <v-divider></v-divider><br/>
           <v-row justify="space-around" >
-            <v-radio-group v-model="radioGroup">
+            <v-radio-group v-model="experience" mandatory :rules="experienceRules">
               <v-row justify="space-between">
               <div>
                 <v-img
@@ -258,8 +256,8 @@
 
           <v-select
           rounded
-          v-model="e6"
-          :items='["Cardio", "PPL", "Hypertrophy","Balance","Gains","Cuts","HIIT","Gymnastics"]'
+          v-model="preferences"
+          :items='["Cardio", "PPL", "Hypertrophy","Balance","Gains","Cuts","HIIT","Yoga"]'
           :menu-props="{ maxHeight: '400' }"
           label="Select"
           multiple
@@ -295,39 +293,15 @@
           color="primary"
           @click="e1 = 10"
         >
-          Continue
-        </v-btn>
-
- 
- 
-      </v-stepper-content>
-
-      <v-stepper-content step="10">
-
-        <h1 style="text-align: center">My pictures...</h1>
-
-          <v-file-input
-               rounded
-              :rules="rules"
-              accept="image/png, image/jpeg, image/bmp"
-              placeholder="Pick an avatar"
-              prepend-icon="mdi-camera"
-              label="Select your profile picture (*optional)"
-              
-              multiple
-        ></v-file-input>
-
-        <v-btn
-          color="primary"
-          @click="e1 = 11"
-        >
           Review
         </v-btn>
 
+
+
  
       </v-stepper-content>
 
-       <v-stepper-content step="11">
+       <v-stepper-content step="10">
 
          <v-container>
 
@@ -335,13 +309,12 @@
             <h3>Phone Number : {{ phone }}</h3>
             <h3>Password : {{ password }}</h3>
             <h3>Name : {{ name }}</h3>
-            <h3>Birthday : {{ picker }}</h3>
+            <h3>Birthday : {{ age }}</h3>
             <h3>Sex : {{ sex }}</h3>
-            <h3>Experience : {{ picked }}</h3>
-            <h3>Preference : {{ preferences }}</h3>
+            <h3>Experience : {{ experience }}</h3>
+            <h3>Preferences : {{ preferences }}</h3>
             <h3>About me : {{ about }}</h3>
-            <h3>Images : {{ image }}</h3>
-            
+        
 
 
               <v-row justify="center">
@@ -361,39 +334,59 @@
     </v-stepper-items>
 
   </v-stepper>
-    <v-footer height="80px" class="blue-rectangle" color="#97CAFA" fixed>
+    <v-footer height="10vw" class="blue-rectangle" color="#97CAFA" fixed>
         </v-footer>
     </div> 
 </template>
 
 
 <script>
-  export default {
 
-      data () {
-      return {
-        e1: 1,
-        links: [
-        'About Us',
-        'Learn',
-        'Support',
-      ]
-      
-      }
-    },
-    
-    computed: () => ({
-      
+import firebase from "firebase/app"
+import { db } from "@/main"
+
+
+  export default {
+      data: () => ({
+      e1: 1,
       valid: false,
-      password: '',
-      nameRules: [
-        v => !!v || 'Password is required'
-      ],
       email: '',
+      password: '',
+      phone:'',
+      name:'',
+      age:'2000-12-31',
+      sex:'Male',
+      experience:'',
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => v.length <= 6 || 'Password must be at least 6 characters long'
+      ],
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      phoneRules: [
+        v => !!v || 'Phone number is required',
+        v => v.length == 10 || 'Phone number must be exactly 10 digits long',
+      ],
+      phoneRules: [
+        v => !!v || 'Phone number is required',
+        v => v.length == 10 || 'Phone number must be exactly 10 digits long',
+      ],
+      nameRules: [
+        v => !!v || 'Name is required',
+      ],
+      ageRules: [
+        v => !!v || 'Date of birth is required',
+        v => int(v.substring(0,5))>2002  || 'You must be over 19 years old to register',
+      ],
+      experienceRules: [
+        v => !!v || 'Level of experience entry is required',
+      ],
+      aboutRules:[
+        v => v.length > 100 || 'About section has over 100 chars',
       ]
+
     }),
 
     watch: {
@@ -412,25 +405,23 @@
           this.e1 = n + 1
         }
       },
-    
-    onFileChange(item, e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
-      this.createImage(item, files[0]);
-    },
-    createImage(item, file) {
-      var image = new Image();
-      var reader = new FileReader();
+      
+      submit(){
+        this.$refs.validate()
+        // firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userData) => {
+        //   if(userData.email in db.collections)
+        // })
+      },
 
-      reader.onload = (e) => {
-        item.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function (item) {
-      item.image = false; 
-    }
+      arrayToMap(array){
+        let newMap = {"Cardio": false, "PPL":false, "Hypertrophy":false,"Balance":false,"Gains":false, "Cuts": false,"HIIT": false, "Yoga": false};
+        array.forEach(element => {
+          newMap[element] = !newMap[element];
+        });
+        console.log(newMap);
+        return newMap;
+      }
+    
   }
   
   }
@@ -440,8 +431,8 @@
 
   
 
-  .step{
-    width: 5%;
-  }
+  /* #bday{
+    justify-content: center;
+  } */
 
 </style>
