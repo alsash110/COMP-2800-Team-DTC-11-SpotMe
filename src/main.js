@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
 firebase.initializeApp({
   apiKey: "AIzaSyBfmIAGUvMVLnGM_FV_dthp-z7p7XWAopo",
@@ -15,13 +16,15 @@ firebase.initializeApp({
   appId: "1:1023138880515:web:c5674a532cd90b41a30236"
 })
 
-export const db = firebase.firestore()
+export const db = firebase.firestore();
+export default firebase;
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  firebase,
   vuetify,
   render: h => h(App)
 }).$mount('#app')
