@@ -9,6 +9,7 @@ import DisplayMatches from '../views/DisplayMatches.vue'
 import mainsettings from '../views/mainsettings.vue'
 import Settings from '../views/SettingsTwo.vue'
 import EditInfo from '../views/EditInfo.vue'
+import AddPhotos from '../views/AddPhotos.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +67,11 @@ const routes = [
     path: '/editinfo',
     name: 'editinfo',
     component: EditInfo
+  },
+  {
+    path: '/addphotos',
+    name: 'AddPhotos',
+    component: AddPhotos
   }
 ]
 

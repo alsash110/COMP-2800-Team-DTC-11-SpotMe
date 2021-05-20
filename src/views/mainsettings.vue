@@ -17,6 +17,7 @@
       <button><img src="image/profileicon.png" alt="" /></button> -->
       <MainSettingsBottomBtns />
     </div>
+    <v-divider></v-divider>
     <div class="Bottom-Section">
       <!--<div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
