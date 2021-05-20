@@ -209,7 +209,7 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Beginner.png?alt=media&token=162e6a3d-04b1-40da-9e9a-b26bd2b45a9e">
                 </v-img>
-                <v-radio v-model="picked" value="Beginner">Beginner
+                <v-radio  value="Beginner">Beginner
                 </v-radio>
               </div>
 
@@ -220,7 +220,7 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb">
                 </v-img>
-                <v-radio v-model="picked" value="Experienced">Experienced
+                <v-radio  value="Experienced">Experienced
                 </v-radio>
               </div>
 
@@ -231,7 +231,7 @@
                   max-width="250"
                   src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Expert.png?alt=media&token=8e12810e-40dc-4646-8746-b182722a1b29">
                 </v-img>
-                <v-radio v-model="picked" value="Expert">
+                <v-radio  value="Expert">
                 Expert</v-radio>
               </div>
               </v-row>
@@ -342,7 +342,8 @@
 <script>
 
 import firebase from "firebase/app"
-import  {db}  from "@/main"
+import {db} from "@/main"
+import 'firebase/firestore'
 
 
   export default {
@@ -360,15 +361,11 @@ import  {db}  from "@/main"
       about:'',
       passwordRules: [
         v => !!v || 'Password is required',
-        v => v.length <= 6 || 'Password must be at least 6 characters long'
+        v => v.length >= 6 || 'Password must be at least 6 characters long'
       ],
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
-      phoneRules: [
-        v => !!v || 'Phone number is required',
-        v => v.length == 10 || 'Phone number must be exactly 10 digits long',
       ],
       phoneRules: [
         v => !!v || 'Phone number is required',
@@ -381,11 +378,11 @@ import  {db}  from "@/main"
         v => !!v || 'Date of birth is required',
         v => int(v.substring(0,5))>2002  || 'You must be over 19 years old to register',
       ],
-      experienceRules: [
-        v => !!v || 'Level of experience entry is required',
-      ],
       aboutRules:[
         v => v.length > 100 || 'About section has over 100 chars',
+      ],
+      experienceRules:[
+        v=> !!v || 'Experience entry required'
       ]
 
     }),
@@ -407,9 +404,9 @@ import  {db}  from "@/main"
         }
       },
       
-      submit(){
+       submit(){
         firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userCred) => {
-           db.collections("users").doc(userCred.user.uid).set({
+           db.collection("users").doc(userCred.user.uid).set({
              email: this.email,
              password: this.password,
              phone_number: this.phone,
@@ -420,18 +417,23 @@ import  {db}  from "@/main"
              experience: this.experienceToString(this.experience),
              quote: this.about,
              photos: []
-           })
-           firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
-        this.$router.replace({ name: "mainsettings" });
-        }).catch( (err) => {
-          alert(err.message)
-        })
-        
+                })
+                try{
+                      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                      this.$router.replace({ name: "mainsettings" });
+                } catch(err){
+                  alert(err.message);
+                }
+                     
+                })
+           
+          .catch( (err) => {
+        alert(err.message)
       })
       },
 
       arrayToMap(array){
-        let newMap = {"Cardio": false, "PPL":false, "Hypertrophy":false,"Balance":false,"Gains":false, "Cuts": false,"HIIT": false, "Yoga": false};
+        let newMap = {"cardio": false, "ppl":false, "hypertrophy":false,"balance":false,"gains":false, "cuts": false,"hiit": false, "yoga": false};
         array.forEach(element => {
           newMap[element] = !newMap[element];
         });
