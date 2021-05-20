@@ -7,7 +7,7 @@
       <v-carousel-item
         v-for="(photo,i) in photos"
         :key="i"
-        :src="photo.src"
+        :src="photo"
         reverse-transition="fade-transition"
         transition="fade-transition"
       ></v-carousel-item>

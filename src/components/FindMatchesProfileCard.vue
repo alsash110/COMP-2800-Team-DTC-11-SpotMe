@@ -25,13 +25,14 @@
 
                             <div
                              v-else class="tagGroup" 
-                             v-for="preference in user.tags" 
-                             :key="preference"
+                             v-for="(value, key) in user.preferences" 
+                             :key="key"
                             >
                                 <v-chip
                                  color="blue"
+                                 v-if="value === true"
                                 >
-                                    <span class="tag">{{preference}}</span>
+                                    <span class="tag">{{key}}</span>
                                 </v-chip>
                             </div>
                         </v-col>
