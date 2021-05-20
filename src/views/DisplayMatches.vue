@@ -12,6 +12,7 @@
     import FindMatchesProfileCard from '../components/FindMatchesProfileCard'
     import FindMatchesFooter from '../components/FindMatchesFooter'
     import { db } from '@/main';
+    import { auth } from '@/main';
     export default {
         name: "DisplayMatches",
         components: {
@@ -43,18 +44,23 @@
                 }
             },
             async getUsers() {
+                let loggedInUserId = "";
+                auth.onAuthStateChanged(loggedInUser => {
+                    loggedInUserId = loggedInUser.uid;
+                })
                 let snapUsers = await db.collection('users').get();
                 let usersData =  [];
                 snapUsers.forEach(user => {
-                    console.log(user.data());
-                    usersData.push(user.data());
+                    if (user.id !== loggedInUserId) {
+                        usersData.push(user.data());
+                    }
                 });
                 //If the list of user is not empty, display only the first user in the list
                 this.users = usersData;
                 if (this.users.length !== 0) {
                     this.users[0].show = true;   
                 }
-                console.log(this.users);
+                // console.log(this.users);
             }
         },
         data() {
