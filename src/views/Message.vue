@@ -130,7 +130,6 @@ export default {
       await snapChatLog
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            console.log(doc.data());
             if (doc.data().users.includes(this.partnerId)){
               this.chatMessages = doc.data().messages.slice().sort((a,b) => a.time - b.time);
               this.chatId = doc.id;
