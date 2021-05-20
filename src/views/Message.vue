@@ -109,8 +109,7 @@ export default {
       if (user) {
         this.userId = user.uid;
       } else {
-        // Just here to  manually set a user id while no log in funtion
-        this.userId = "TORHIw13rwRioiqE9ln6RYigJK82";
+        console.log('Not Logged In')
       }
       let userRef = db
         .collection("users-chat-test")

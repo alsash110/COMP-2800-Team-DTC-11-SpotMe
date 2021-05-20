@@ -97,6 +97,7 @@
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then(data => {
+        this.$store.commit('setUid');
         this.$router.replace({ name: "mainsettings" });
       })
       .catch(err => {

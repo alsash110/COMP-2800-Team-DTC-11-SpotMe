@@ -51,6 +51,12 @@ export default {
     ChatRow,
     Footer,
   },
+  data() {
+    return {
+      allChats: [],
+      userid:"",
+    };
+  },
 
   computed: {
     chats() {
@@ -68,18 +74,30 @@ export default {
     openchat: function (event) {
       this.$router.push("message/123123123");
     },
+    async getUserId() {
+        var user = firebase.auth().currentUser;
+        if (user) {
+            console.log("logged in");
+            this.userid = user.uid;
+        } else {
+            console.log('Not logged in');
+        }
+    },
     async getChats() {
-      var user = firebase.auth().currentUser;
-      var userid;
-      if (user) {
-        userid = user.uid;
-      } else {
-        // Just here to  manually set a user id while no log in funtion
-        userid = "TORHIw13rwRioiqE9ln6RYigJK82";
-      }
+        console.log("getchats called");
+        // this.getUserId();
+    //   var user = await firebase.auth().currentUser;
+    //   var userid;
+    //   if (user) {
+    //       console.log("logged in");
+    //     userid = user.uid;
+    //   } else {
+    //     console.log('Not logged in');
+    //   }
+        console.log(this.$store.state.user.uid);
       let snapChatLog = db
         .collection("chat-logs")
-        .where("users", "array-contains", userid)
+        .where("users", "array-contains", this.$store.state.user.uid)
         .get();
       let listochats = [];
       await snapChatLog
@@ -87,7 +105,7 @@ export default {
           querySnapshot.forEach((doc) => {
             let partneruid = doc
               .data()
-              .users.filter((e) => e !== "TORHIw13rwRioiqE9ln6RYigJK82")[0];
+              .users.filter((e) => e !== this.$store.state.user.uid)[0];
             listochats.push({
               partnerId: partneruid,
               messages: doc.data().messages,
@@ -100,13 +118,11 @@ export default {
         this.allChats = listochats;
     },
   },
-  data() {
-    return {
-      allChats: [],
-    };
+  created(){
+      this.$store.commit('setUid');
   },
-  created() {
-    this.getChats();
+  mounted() {
+      this.getChats();
   },
 };
 </script>
