@@ -19,7 +19,30 @@ firebase.initializeApp({
 export const db = firebase.firestore();
 export default firebase;
 
+
+
 Vue.config.productionTip = false
+
+firebase.auth().onAuthStateChanged(function (user){
+  if(user){
+    console.log("LOGGED IN "+user.uid);
+  }
+  else{
+    console.log("not signed in");
+  }
+});
+
+
+// firebase.auth().onAuthStateChanged(user => {
+//   console.log("user", user);
+//   if (!app) {
+//     app = new Vue({
+//       router,
+//       store,
+//       render: h => h(App)
+//     }).$mount("#app");
+//   }
+// });
 
 new Vue({
   router,

@@ -9,9 +9,9 @@
              plain
              raised
              outlined
-             to="/displaymatches"
+             to="/settings"
             >
-                <v-icon>mdi-account-supervisor</v-icon>
+                <v-icon>mdi-cog</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn
@@ -21,9 +21,9 @@
              plain
              raised
              outlined
-             to="/mainsettings"
+             to="/addphotos"
             >
-                <v-icon>mdi-home</v-icon>
+                <v-icon>mdi-camera</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn
@@ -33,9 +33,9 @@
              plain
              raised
              outlined
-             @click="goToChat"
+             to="/editinfo"
             >
-                <v-icon>mdi-chat</v-icon>
+                <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
         </v-toolbar>
@@ -44,12 +44,6 @@
 
 <script>
     export default {
-        name: "FindMatchesHeader",
-
-        methods: {
-            goToChat: function (event) {
-                this.$router.push('chat');
-            }
-        }
+        name: "MainSettingsBottomBtns"
     }
 </script>
