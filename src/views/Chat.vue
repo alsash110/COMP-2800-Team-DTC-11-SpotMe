@@ -79,7 +79,7 @@ export default {
       }
       let snapChatLog = db
         .collection("chat-logs")
-        .where("users", "array-contains", "TORHIw13rwRioiqE9ln6RYigJK82")
+        .where("users", "array-contains", userid)
         .get();
       let listochats = [];
       await snapChatLog

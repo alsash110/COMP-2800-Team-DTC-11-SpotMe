@@ -6,6 +6,7 @@
       height="5em"
       outlined
       color="transparent"
+      :to="'/message/'+this.partnerId"
     >
       <div class="grid-container">
         <div class="profile-pic">
@@ -45,6 +46,8 @@ export default {
             this.name = doc.data().name;
             this.img = doc.data().photo[0];
         })
+        let sortedMessages = this.$props.chat.chat.messages.slice().sort((a,b) => b.time - a.time);
+        this.messageToDisplay = sortedMessages[0].message;
     },
   },
   data() {

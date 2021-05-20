@@ -2,14 +2,14 @@
 <div class="container">
     <div v-for="(message, index) in messages" :key="index">
         <p
-            v-if="message.user == user"
+            v-if="message.sender == userId"
             class="user-message">
-        {{message.content}}
+        {{message.message}}
         </p>
         <p
             v-else
             class="partner-message">
-        {{message.content}}
+        {{message.message}}
         </p>
         <br>
     </div>
@@ -20,8 +20,10 @@
 export default {
     props: {
         user: String,
+        userId: String,
         messages: Array,
         partner: String,
+        partnerId: String,
     },
 }
 </script>
