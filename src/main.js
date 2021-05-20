@@ -24,7 +24,7 @@ Vue.config.productionTip = false
 
 firebase.auth().onAuthStateChanged(function (user){
   if(user){
-    console.log(user.email);
+    console.log("LOGGED IN "+user.uid);
   }
   else{
     console.log("not signed in");
