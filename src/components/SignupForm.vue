@@ -161,7 +161,7 @@
         <br/>
         
         <v-row justify="center">
-           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date().toISOString().substr(0, 10)"></v-date-picker>
+           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date(2002,5,20).toISOString().substr(0, 10)"></v-date-picker>
         </v-row>
 
         <br/>
