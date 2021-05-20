@@ -56,7 +56,7 @@
                     >
                     </v-img>
                     <v-card-text>
-                        <b>Loading more users..</b>
+                        <b>Uh oh, there doesn't seem to be anymore buddies registered..</b>
                     </v-card-text>
                 </div>
             </v-card>

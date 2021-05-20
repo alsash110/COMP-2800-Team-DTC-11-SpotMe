@@ -2,7 +2,7 @@
     <div>
         <FindMatchesHeader/>
         <FindMatchesProfileCard :users="users"/>
-        <FindMatchesFooter @approve-user="onClick" @reject-user="onClick"/>
+        <FindMatchesFooter @approve-user="onApproveClick" @reject-user="onRejectClick"/>
         
     </div>
 </template>
@@ -20,8 +20,19 @@
             FindMatchesFooter
         },
         methods: {
-            onClick() {
-                // When a button component is clicked
+            onApproveClick() {
+                // When the button component is clicked, add current displayerd user to logged in user's accepted list
+                console.log(this.users);
+                //Remove the first user from the list out of the list
+                this.users.shift();
+                console.log(this.users);
+                //If the list of user is not empty, display only the first user in the newly shifted list
+                if (this.users.length !== 0) {
+                    this.users[0].show = true;   
+                }
+            },
+            onRejectClick() {
+                // When the button component is clicked add current displayed user to logged in user's rejected list
                 console.log(this.users);
                 //Remove the first user from the list out of the list
                 this.users.shift();
