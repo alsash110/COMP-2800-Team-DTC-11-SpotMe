@@ -161,7 +161,7 @@
         <br/>
         
         <v-row justify="center">
-           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date(2002,5,20).toISOString().substr(0, 10)"></v-date-picker>
+           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date(2020,5,20).toISOString().substr(0, 10)"></v-date-picker>
         </v-row>
 
         <br/>
@@ -412,7 +412,9 @@ import 'firebase/firestore'
              phone_number: this.phone,
              name: this.name,
              sex: this.sex,
-             age: this.age,
+             age: this.getAge(this.age),
+             matched: [],
+             rejected: [],
              preferences: this.arrayToMap(this.preferences),
              experience: this.experienceToString(this.experience),
              quote: this.about,
@@ -451,7 +453,39 @@ import 'firebase/firestore'
         else{
           return "Expert"
         }
+      },
+
+      getAge(str){
+        let yob = str.split('-');
+        console.log(yob);
+        let currentYear = new Date().getFullYear();
+        console.log(currentYear);
+        let currentMonth = new Date().getMonth()+1;
+        console.log(currentMonth);
+        let currentDay = new Date().getDate();
+        console.log(currentDay);
+        let user_age = currentYear-Number(yob[0])-1;
+        console.log(user_age);
+        if(currentMonth<Number(yob[1])){
+          console.log("final age "+user_age);
+          return String(user_age);
+        }
+        else if(currentMonth>Number(yob[1])){
+          console.log("final age "+user_age+1);
+          return String(user_age+1);
+        }
+        else{
+          if(currentDay>=yob[2]){
+            console.log("final age "+user_age+1);
+            return String(user_age+1);
+          }
+          else{
+            console.log("final age "+user_age);
+            return String(user_age);
+          }
+        }
       }
+
       }
   
   
