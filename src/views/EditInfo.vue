@@ -52,6 +52,22 @@
       </v-expansion-panel-content>
     </v-expansion-panel>
 
+    <!-- <v-col
+            cols="12"
+            sm="6"
+          >
+            <v-slider
+              v-model="form.age"
+              :rules="rules.age"
+              color="orange"
+              label="Age"
+              hint="Be honest"
+              min="1"
+              max="100"
+              thumb-label
+            ></v-slider>
+          </v-col> -->
+
        <v-expansion-panel>
       <v-expansion-panel-header>
         <template v-slot:default="{ open }">
@@ -114,8 +130,17 @@
         location: null,
         start: null,
         end: null,
+        age: null
       },
     }),
+    // return: {
+    //     form: Object.assign({}, defaultForm),
+    //     rules: {
+    //       age: [
+    //         val => val < 10 || `I don't believe you!`,
+    //       ]
+    //     }
+    // }
     
   }
 </script>
