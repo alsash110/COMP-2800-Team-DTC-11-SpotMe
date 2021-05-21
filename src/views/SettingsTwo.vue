@@ -153,6 +153,12 @@
         </template>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
+        <!-- Possible slider change -->
+        <!-- <v-slider
+                v-model="ex1.val"
+                :color="ex1.color"
+                :label="ex1.label"
+              ></v-slider> -->
         <v-text-field
           v-model="trip.name"
           placeholder="How far would you like to meet?"
