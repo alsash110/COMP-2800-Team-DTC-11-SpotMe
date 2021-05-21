@@ -47,72 +47,6 @@
             </v-expansion-panel-content>
           </v-expansion-panel>
 
-<<<<<<< HEAD
-    <!-- <v-col
-            cols="12"
-            sm="6"
-          >
-            <v-slider
-              v-model="form.age"
-              :rules="rules.age"
-              color="orange"
-              label="Age"
-              hint="Be honest"
-              min="1"
-              max="100"
-              thumb-label
-            ></v-slider>
-          </v-col> -->
-
-       <v-expansion-panel>
-      <v-expansion-panel-header>
-        <template v-slot:default="{ open }">
-          <v-row no-gutters>
-            <v-col cols="4">
-                Email
-            </v-col>
-            <v-col
-              cols="8"
-              class="text--secondary"
-            >
-              <v-fade-transition leave-absolute>
-                <span
-                  v-if="open"
-                  key="0"
-                >
-                </span>
-                <span
-                  v-else
-                  key="1"
-                >
-                </span>
-              </v-fade-transition>
-            </v-col>
-          </v-row>
-        </template>
-      </v-expansion-panel-header>
-      <v-expansion-panel-content>
-        <v-text-field
-          v-model="trip.name"
-          placeholder="Change your email!"
-        ></v-text-field>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
-            </div>
-        </div>
-    <div class="footer">
-          <v-footer color="primary lighten-3" padless fixed>
-            <v-row justify="center" no-gutters>
-              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
-                {{ link }}
-              </v-btn>
-            <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
-              {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
-            </v-col>
-            </v-row>
-          </v-footer>
-=======
           <v-expansion-panel>
             <v-expansion-panel-header>
               <template v-slot:default="{ open }">
@@ -174,7 +108,6 @@
         label="Bio"
         rows="1"
       ></v-textarea>
->>>>>>> alberto_javier_settingsbackend
         </div>
 
         <div>
@@ -216,30 +149,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  import DevProfile from '../components/DevProfile'
-  export default {
-    data: () => ({
-      date: null,
-      trip: {
-        name: '',
-        location: null,
-        start: null,
-        end: null,
-        age: null
-      },
-    }),
-    // return: {
-    //     form: Object.assign({}, defaultForm),
-    //     rules: {
-    //       age: [
-    //         val => val < 10 || `I don't believe you!`,
-    //       ]
-    //     }
-    // }
-    
-  }
-=======
 import DevProfile from "../components/DevProfile";
 export default {
   data: () => ({
@@ -255,7 +164,6 @@ export default {
     // }
   }),
 };
->>>>>>> alberto_javier_settingsbackend
 </script>
 
 <style>
