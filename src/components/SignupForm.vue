@@ -313,7 +313,7 @@
             <h3>Sex : {{ sex }}</h3>
             <h3>Experience : {{ experience }}</h3>
             <h3>Preferences : {{ preferences }}</h3>
-            <h3>About me : {{ about }}</h3>
+            <h5>About me : {{ about }}</h5>
         
 
 
@@ -486,7 +486,7 @@ import 'firebase/firestore'
           }
         }
       }
-      
+
       }
   
   
