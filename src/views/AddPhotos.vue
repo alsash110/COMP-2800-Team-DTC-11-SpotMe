@@ -8,14 +8,14 @@
              <v-img v-bind="props" gradient="to bottom left, #59ABF8, #84BDF2"></v-img>
            </template>
             <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
-            <h1 style="color:white">Settings</h1>
+            <h1 style="color:white">Add Photos</h1>
             <v-spacer></v-spacer>
             <v-btn class="nav-btn" color="primary" rounded to="/mainsettings">Done</v-btn>
            </v-toolbar>   
          </div>
            <div class="Mid-Section">
             <div class="usersettings">
-                <h1>Add Photos</h1>
+                <h1>Let's make yourself look good for others!</h1>
             </div>
            </div>
            <v-flex>

@@ -7,7 +7,6 @@
            <template v-slot:img="{ props }">
              <v-img v-bind="props" gradient="to bottom left, #59ABF8, #84BDF2"></v-img>
            </template>
-            <img class="navbar-img" width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">Settings</h1>
             <v-spacer></v-spacer>
             <v-btn class="nav-btn" color="primary" rounded to="/mainsettings">Done</v-btn>
@@ -269,18 +268,19 @@
             </div>
         </div>
     <div class="footer">
-          <v-footer color="primary lighten-3" padless fixed>
-            <v-row justify="center" no-gutters>
-              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
-                {{ link }}
-              </v-btn>
-            <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
+        <v-footer color="primary lighten-3" padless fixed>
+          <v-row justify="center" no-gutters>
+            <img class="static" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/staticboy.png?alt=media&token=c7954c21-08c0-43b9-bc54-ff2d4210c067"><img class="active" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ezgif.com-gif-maker.gif?alt=media&token=c30a3166-5132-4157-b9c7-7d9a0a412b30">   
+            <v-col
+              class="primary lighten-3 py-4 text-center white--text"
+              cols="12"
+            >
               {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
             </v-col>
-            </v-row>
-          </v-footer>
-        </div>
-        </div>
+          </v-row>
+        </v-footer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -331,5 +331,19 @@
 
 .Mid-Section img {
   margin: auto;
+}
+
+.static {
+  position:absolute;
+  background: white;
+  max-height: 15vw;
+}
+
+.active {
+  max-height: 15vw;
+}
+
+.static:hover {
+  opacity:0;
 }
 </style>
