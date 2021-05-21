@@ -405,6 +405,7 @@ import 'firebase/firestore'
       },
       
        submit(){
+
         firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userCred) => {
            db.collection("users").doc(userCred.user.uid).set({
              email: this.email,
@@ -485,7 +486,7 @@ import 'firebase/firestore'
           }
         }
       }
-
+      
       }
   
   
