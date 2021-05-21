@@ -93,16 +93,22 @@ export default {
     async getPartnerId() {
       let uri = window.location.href.split("/");
       this.partnerId = uri[uri.length - 1];
-      let userRef = db
-        .collection("users-chat-test")
-        .where("uid", "==", this.partnerId)
-        .get();
-      await userRef.then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.partnerName = doc.data().name;
-          this.partnerImg = doc.data().photo[0];
-        })
-      })
+      // let userRef = db
+      db
+        .collection("users")
+        .doc(this.partnerId)
+        .get().then((doc) => {
+          if (doc.exists) {
+            this.partnerName = doc.data().name;
+            this.partnerImg = doc.data().photo[0];
+          }
+        });
+      // await userRef.then((querySnapshot) => {
+      //   querySnapshot.forEach((doc) => {
+      //     this.partnerName = doc.data().name;
+      //     this.partnerImg = doc.data().photo[0];
+      //   })
+      // })
     },
     async getCurrentUserId() {
       var user = firebase.auth().currentUser;
@@ -111,15 +117,20 @@ export default {
       } else {
         console.log('Not Logged In')
       }
-      let userRef = db
-        .collection("users-chat-test")
-        .where("uid", "==", this.userId)
-        .get();
-      await userRef.then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.userName = doc.data().name;
-        })
-      })
+      // let userRef = db
+      db
+        .collection("users")
+        .doc(this.userId)
+        .get().then((doc) =>{
+          if (doc.exists){
+            this.userName = doc.data().name;
+          }
+        });
+      // await userRef.then((querySnapshot) => {
+      //   querySnapshot.forEach((doc) => {
+      //     this.userName = doc.data().name;
+      //   })
+      // })
     },
     async getMessages() {
       let snapChatLog = db

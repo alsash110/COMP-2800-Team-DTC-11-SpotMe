@@ -38,16 +38,27 @@ export default {
     async getCardInfo() {
         let partnerId = this.$props.chat.chat.partnerId;
         this.partnerId = partnerId;
+        console.log(this.partnerId);
         let userRef = await db
-            .collection("users-chat-test")
-            .where("uid", "==", partnerId)
-            .get();
-        userRef.forEach(doc => {
-            this.name = doc.data().name;
-            this.img = doc.data().photo[0];
-        })
+            .collection("users")
+            .doc(this.partnerId)
+            .get().then((doc) => {
+                if (doc.exists) {
+                    this.name = doc.data().name;
+                    if (doc.data().photos.length > 0){
+                        this.img = doc.data().photos[0];
+                    }
+                }
+            });
+        // userRef.forEach(doc => {
+        //     console.log(doc.data());
+        //     this.name = doc.data().name;
+        //     this.img = doc.data().photo[0];
+        // })
         let sortedMessages = this.$props.chat.chat.messages.slice().sort((a,b) => b.time - a.time);
-        this.messageToDisplay = sortedMessages[0].message;
+        if (sortedMessages.length > 0 ){
+            this.messageToDisplay = sortedMessages[0].message;
+        }
     },
   },
   data() {
