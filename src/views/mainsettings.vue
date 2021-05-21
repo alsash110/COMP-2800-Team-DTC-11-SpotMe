@@ -22,7 +22,7 @@
     </div>
     <v-divider></v-divider>
     <div class="Bottom-Section">
-      <div class="footer">
+      <!--<div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
             <img class="static" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/staticboy.png?alt=media&token=c7954c21-08c0-43b9-bc54-ff2d4210c067"><img class="active" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/ezgif.com-gif-maker.gif?alt=media&token=c30a3166-5132-4157-b9c7-7d9a0a412b30">
@@ -35,7 +35,8 @@
             </v-col>
           </v-row>
         </v-footer>
-      </div>
+      </div> -->
+      <SettingsFooter />
     </div>
   </div>
 </template>
@@ -43,11 +44,13 @@
 <script>
 import FindMatchesHeader from "../components/FindMatchesHeader";
 import MainSettingsBottomBtns from "../components/MainSettingsBottomBtns";
+import SettingsFooter from "../components/SettingsFooter";
 export default {
   name: "MainSettingsPage",
   components: {
     FindMatchesHeader,
     MainSettingsBottomBtns,
+    SettingsFooter
   },
 };
 </script>

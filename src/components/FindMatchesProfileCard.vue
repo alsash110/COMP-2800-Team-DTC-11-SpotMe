@@ -25,13 +25,14 @@
 
                             <div
                              v-else class="tagGroup" 
-                             v-for="tag in user.tags" 
-                             :key="tag"
+                             v-for="(value, key) in user.preferences" 
+                             :key="key"
                             >
                                 <v-chip
                                  color="blue"
+                                 v-if="value === true"
                                 >
-                                    <span class="tag">{{tag}}</span>
+                                    <span class="tag">{{key}}</span>
                                 </v-chip>
                             </div>
                         </v-col>
@@ -55,7 +56,7 @@
                     >
                     </v-img>
                     <v-card-text>
-                        <b>Loading more users..</b>
+                        <b>Uh oh, there doesn't seem to be anymore buddies registered..</b>
                     </v-card-text>
                 </div>
             </v-card>
