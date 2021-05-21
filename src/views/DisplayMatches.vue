@@ -35,6 +35,7 @@
                             "matched": this.loggedInUserMatches
                         })
                         .then( _=> {
+                            this.checkIfMatched(loggedInUser.uid, this.usersIds[0]);
                             this.users.shift();
                             this.usersIds.shift();
                             console.log(this.users);
@@ -74,6 +75,17 @@
                     })
                     .catch(err => console.log(err))
                })
+            },
+            checkIfMatched(idOfUser, partnerId){
+                db.collection('users').doc(partnerId).get().then(doc => {
+                    if (doc.data().matched.includes(idOfUser)){
+                        db.collection('chat-logs').add({
+                            hidden: false,
+                            messages: [],
+                            users: [idOfUser, partnerId]
+                        })
+                    }
+                })
             },
             getUsers() {
                 auth.onAuthStateChanged(loggedInUser => {
