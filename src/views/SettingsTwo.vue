@@ -153,6 +153,12 @@
         </template>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
+        <!-- Possible slider change -->
+        <!-- <v-slider
+                v-model="ex1.val"
+                :color="ex1.color"
+                :label="ex1.label"
+              ></v-slider> -->
         <v-text-field
           v-model="trip.name"
           placeholder="How far would you like to meet?"
@@ -295,35 +301,35 @@
 
 <style>
 .navbar h1 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
 }
 
 .navbar h1 {
-    margin-left: 40px;
-    margin-top: 30px;
+  margin-left: 40px;
+  margin-top: 30px;
 }
 
 .nav-btn {
-    margin-top: 35px;
+  margin-top: 35px;
 }
 
 .navbar-img {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .Mid-Section {
-    background-color: rgba(196, 196, 196, 0.3);
+  background-color: rgba(196, 196, 196, 0.3);
 }
 
 .Mid-Section h1 {
-    font-size: 15px;
-    font-weight: normal;
-    padding: 3vh;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 3vh;
 }
 
 .Mid-Section img {
-    margin: auto;
+  margin: auto;
 }
 </style>
