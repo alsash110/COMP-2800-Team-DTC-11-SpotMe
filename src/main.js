@@ -16,7 +16,9 @@ firebase.initializeApp({
   appId: "1:1023138880515:web:c5674a532cd90b41a30236"
 })
 
-export const db = firebase.firestore()
+export const db = firebase.firestore();
+export default firebase;
+export const auth = firebase.auth();
 
 
 
@@ -46,6 +48,7 @@ firebase.auth().onAuthStateChanged(function (user){
 new Vue({
   router,
   store,
+  firebase,
   vuetify,
   render: h => h(App)
 }).$mount('#app')
