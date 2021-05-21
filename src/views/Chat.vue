@@ -84,7 +84,6 @@ export default {
         }
     },
     async getChats() {
-        console.log("getchats called");
         // this.getUserId();
     //   var user = await firebase.auth().currentUser;
     //   var userid;
@@ -94,7 +93,6 @@ export default {
     //   } else {
     //     console.log('Not logged in');
     //   }
-        console.log(this.$store.state.user.uid);
       let snapChatLog = db
         .collection("chat-logs")
         .where("users", "array-contains", this.$store.state.user.uid)

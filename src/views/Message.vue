@@ -99,8 +99,11 @@ export default {
         .doc(this.partnerId)
         .get().then((doc) => {
           if (doc.exists) {
+            console.log(doc.data());
             this.partnerName = doc.data().name;
-            this.partnerImg = doc.data().photo[0];
+            if (doc.data().photos.length > 0){
+              this.partnerImg = doc.data().photos[0];
+              }
           }
         });
       // await userRef.then((querySnapshot) => {
