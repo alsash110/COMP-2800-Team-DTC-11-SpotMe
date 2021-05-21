@@ -102,7 +102,20 @@ console.log("we're here. router meesage");
 //     if (to.name !== 'Login' && !isAuthenticated ) next({ name: 'Login' })
 //     else next()
 //   }
-  
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authRequired)) {
+    if (firebase.auth().currentUser) {
+      next();
+    } else {
+      alert('You must be logged in to see this page');
+      next({
+        path: '/',
+      });
+    }
+  } else {
+    next();
+  }
+});
 
   // const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   // const isAuthenticated = firenase.auth().currentUser;
