@@ -95,7 +95,6 @@
 
         <div>
           <v-textarea
-        v-model="bio"
         auto-grow
         filled
         color="blue"
@@ -106,7 +105,6 @@
 
         <div>
           <v-textarea
-        v-model="interests"
         auto-grow
         filled
         color="blue"
