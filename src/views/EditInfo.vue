@@ -50,7 +50,6 @@ export default {
         .get()
         .then( doc => {
           this.userInfo = doc.data();
-          console.log(this.userInfo);
         })
         .catch(err => console.log(err))
       })
