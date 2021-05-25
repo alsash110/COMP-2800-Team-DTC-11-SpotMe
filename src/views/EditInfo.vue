@@ -15,7 +15,7 @@
         >
       </v-toolbar>
     </div>
-    <div class="Mid-Section">
+    <!-- <div class="Mid-Section">
       <div class="usersettings">
         <h1>Info Settings</h1>
         <v-expansion-panels>
@@ -61,11 +61,14 @@
                 placeholder="How old are you?"
               ></v-text-field>
               <div>
-              <!-- <v-slider
+
+              Slider
+               <v-slider
                 v-model="ex1.val"
                 :color="ex1.color"
                 :label="ex1.label"
-              ></v-slider> -->
+              ></v-slider> 
+
               </div>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -114,7 +117,8 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
+    <ShowAndOverwriteInfo/>
     <div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
@@ -133,9 +137,14 @@
 
 <script>
 import DevProfile from "../components/DevProfile";
+import ShowAndOverwriteInfo from "../components/ShowAndOverwriteInfo"
 export default {
   data: () => ({
+    name: editinfo,
     date: null,
+    components: {
+      ShowAndOverwriteInfo
+    },
     trip: {
       name: "",
       location: null,
