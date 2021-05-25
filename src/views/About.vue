@@ -72,16 +72,16 @@
     </div>
     </v-parallax>
     <div class="footer">
-          <v-footer color="primary lighten-3" padless>
-            <v-row justify="center" no-gutters>
-              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
-                {{ link }}
-              </v-btn>
-            <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
-              {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
-            </v-col>
-            </v-row>
-          </v-footer>
+          <v-footer class="blue-rectangle" color="primary lighten-3" padless>
+            <v-row justify="center" no-gutters >
+              <v-btn text color="white">About Us</v-btn>
+              <v-btn to="/support"  text color="white">Support</v-btn>
+              <v-btn to="/" text color="white">Home</v-btn>
+              <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
+                  {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
+              </v-col>
+             </v-row>
+        </v-footer>
         </div>
         </div>
   </div>
@@ -94,15 +94,7 @@
     components: {
       DevProfile
     },
-    data () {
-      return {
-      links: [
-        'About Us',
-        'Learn',
-        'Support'
-      ]
-    }
-    },
+
 
         data: () => ({
       drawer: false,
