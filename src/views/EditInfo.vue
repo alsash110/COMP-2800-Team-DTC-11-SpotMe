@@ -118,7 +118,7 @@
 
       </div>
     </div> -->
-    <ShowAndOverwriteInfo/>
+    <ShowAndOverwriteInfo :userInfo="userInfo"/>
     <div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
@@ -138,23 +138,66 @@
 <script>
 import DevProfile from "../components/DevProfile";
 import ShowAndOverwriteInfo from "../components/ShowAndOverwriteInfo"
+import { auth } from '@/main';
+import { db } from '@/main';
 export default {
-  data: () => ({
-    name: editinfo,
-    date: null,
-    components: {
-      ShowAndOverwriteInfo
+  name: "editinfo",
+  components: {
+    ShowAndOverwriteInfo
+  },
+  methods: {
+    //Enter methods here
+    getLoggedInUser() {
+      auth.onAuthStateChanged(loggedInUser => {
+        db.collection('users').doc(loggedInUser.uid)
+        .get()
+        .then( doc => {
+          this.userInfo = doc.data();
+          console.log(this.userInfo);
+        })
+        .catch(err => console.log(err))
+      })
     },
-    trip: {
-      name: "",
-      location: null,
-      start: null,
-      end: null,
-    },
-    // return: {
-    //   ex1: { label: 'color', val: 25, color: 'orange darken-3' },
+    // submit() {
+    //   auth.onAuthStateChanged(loggedInUser => {
+    //     db.collection('users').doc(loggedInUser.uid)
+    //     .set({
+    //       name: "",
+    //       age: "",
+    //       sex: ""
+    //     })
+    //     .catch(err => alert(err))
+    //   })
+    // },
+    // setName(value) {
+    //   console.log(value);
     // }
-  }),
+  },
+  data() {
+    return {
+      userInfo: {}
+    }
+  },
+  created(){
+    //Call methods that are used upon creation of life cycle
+    this.getLoggedInUser();
+  }
+  // data: () => ({
+  //   name: editinfo,
+  //   date: null,
+  //   components: {
+  //     ShowAndOverwriteInfo
+  //   },
+  //   trip: {
+  //     name: "",
+  //     location: null,
+  //     start: null,
+  //     end: null,
+  //   },
+  //   // return: {
+  //   //   ex1: { label: 'color', val: 25, color: 'orange darken-3' },
+  //   // }
+  // }),
 };
 </script>
 
@@ -204,5 +247,13 @@ export default {
 
 .static:hover {
   opacity:0;
+}
+
+.tagGroup {
+    display: inline-flex;
+    margin: 1px;
+}
+.tag {
+    color: white;
 }
 </style>
