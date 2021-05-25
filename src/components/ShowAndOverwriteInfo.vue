@@ -105,28 +105,6 @@
           persistent-hint
           @change="setPreferences"
         ></v-select>
-        <!-- <div
-          class="tagGroup" 
-          v-for="(value, key) in userInfo.preferences" 
-          :key="key"
-        >
-          <v-chip
-            :v-model="value"
-            @click="toggle"
-            color="blue"
-            v-if="value === true"
-          >
-            <span class="tag">{{key}}</span>
-          </v-chip>
-          <v-chip
-            :v-model="value"
-            @click="toggle"
-            v-else
-            color="grey"
-          >
-            <span class="tag">{{key}}</span>
-          </v-chip>
-        </div> -->
       </v-container>
     </div>
   </div>
@@ -207,31 +185,6 @@ export default {
         preferences: []
       }
     }
-  //   methods: {
-  //       // updateInfo() {
-  //       //     firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userCred) => {
-  //       //    db.collection("users").doc(userCred.user.uid).set({
-  //       //      name: this.name,
-  //       //      sex: this.sex,
-  //       //      age: this.getAge(this.age),
-  //       //      matched: [],
-  //       //      rejected: [],
-  //       //      preferences: this.arrayToMap(this.preferences),
-  //       //      quote: this.about
-  //       //         })
-  //       // }
-        
-  //   },
-  //   data: () => ({
-  //   valid: false,
-  //   email: "",
-  //   phone: "",
-  //   name: "",
-  //   age: "2000-12-31",
-  //   sex: "Male",
-  //   preferences: [],
-  //   about: ''
-  // }),
 };
 </script>
 

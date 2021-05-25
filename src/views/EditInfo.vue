@@ -15,109 +15,6 @@
         >
       </v-toolbar>
     </div>
-    <!-- <div class="Mid-Section">
-      <div class="usersettings">
-        <h1>Info Settings</h1>
-        <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Name </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="What is your preferred name?"
-              ></v-text-field>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Age </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="How old are you?"
-              ></v-text-field>
-              <div>
-
-              Slider
-               <v-slider
-                v-model="ex1.val"
-                :color="ex1.color"
-                :label="ex1.label"
-              ></v-slider> 
-
-              </div>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Gender </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="What do you identify yourself as?"
-              ></v-text-field>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-
-        <div>
-          <v-textarea
-        auto-grow
-        filled
-        color="blue"
-        label="Bio"
-        rows="1"
-      ></v-textarea>
-        </div>
-
-        <div>
-          <v-textarea
-        auto-grow
-        filled
-        color="blue"
-        label="Interest Tags"
-        rows="1"
-      ></v-textarea>
-        </div>
-
-      </div>
-    </div> -->
     <ShowAndOverwriteInfo :userInfo="userInfo"/>
     <div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
@@ -158,20 +55,6 @@ export default {
         .catch(err => console.log(err))
       })
     },
-    // submit() {
-    //   auth.onAuthStateChanged(loggedInUser => {
-    //     db.collection('users').doc(loggedInUser.uid)
-    //     .set({
-    //       name: "",
-    //       age: "",
-    //       sex: ""
-    //     })
-    //     .catch(err => alert(err))
-    //   })
-    // },
-    // setName(value) {
-    //   console.log(value);
-    // }
   },
   data() {
     return {
@@ -182,22 +65,6 @@ export default {
     //Call methods that are used upon creation of life cycle
     this.getLoggedInUser();
   }
-  // data: () => ({
-  //   name: editinfo,
-  //   date: null,
-  //   components: {
-  //     ShowAndOverwriteInfo
-  //   },
-  //   trip: {
-  //     name: "",
-  //     location: null,
-  //     start: null,
-  //     end: null,
-  //   },
-  //   // return: {
-  //   //   ex1: { label: 'color', val: 25, color: 'orange darken-3' },
-  //   // }
-  // }),
 };
 </script>
 
