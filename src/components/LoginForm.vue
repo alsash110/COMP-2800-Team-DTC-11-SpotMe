@@ -55,7 +55,15 @@
     
  </validation-observer>
  
-<v-footer height="80px" class="blue-rectangle" color="#97CAFA" fixed>
+<v-footer height="80vw" class="blue-rectangle" color="primary lighten-3" fixed padless>
+          <v-row justify="space-around" no-gutters>
+            <v-btn to="/" rounded text color="white">Home</v-btn>
+            <v-btn to="/support" rounded text color="white">Support</v-btn>
+            <v-btn to="/about" rounded text color="white" depressed>About</v-btn>
+          <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
+              {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
+            </v-col>
+             </v-row>
         </v-footer>
           </div>
 
