@@ -1,8 +1,8 @@
 <template>
   <div class="Mid-Section">
     <div class="usersettings">
-      <h1>Info Settings</h1>
-      <v-expansion-panels>
+      <!-- <h1>Workout Preferences </h1> -->
+      <!-- <v-expansion-panels>
         <v-expansion-panel>
           <v-expansion-panel-header>
             <template v-slot:default="{ open }">
@@ -46,14 +46,6 @@
               :placeholder="userInfo.age"
               @input="setAge"
             >{{userInfo.age}}</v-text-field>
-            <!-- <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date(2020,5,20).toISOString().substr(0, 10)"></v-date-picker> -->
-            <div>
-              <!-- <v-slider
-                v-model="ex1.val"
-                :color="ex1.color"
-                :label="ex1.label"
-              ></v-slider> -->
-            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
 
@@ -78,8 +70,8 @@
               @input="setSex"
             >{{userInfo.sex}}</v-text-field>
           </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-expansion-panels>
+        </v-expansion-panel> 
+      </v-expansion-panels> -->
 
       <div>
         <v-textarea
@@ -121,33 +113,33 @@ export default {
       userInfo: Object
     },
     methods: {
-      setName() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            name: this.name
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setAge() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            age: this.age
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setSex() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            sex: this.sex
-          })
-          .catch(err => console.log(err))
-        })
-      },
+      // setName() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       name: this.name
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setAge() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       age: this.age
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setSex() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       sex: this.sex
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
       setQuote() {
         auth.onAuthStateChanged(loggedInUser => {
           db.collection('users').doc(loggedInUser.uid)
@@ -178,9 +170,9 @@ export default {
     },
     data() {
       return {
-        name: "",
-        age: "",
-        sex: "",
+        // name: "",
+        // age: "",
+        // sex: "",
         quote: "",
         preferences: []
       }
@@ -189,4 +181,8 @@ export default {
 </script>
 
 <style scoped>
+.navbar h1 {
+  font-size: 2em;
+}
+
 </style>

@@ -98,12 +98,13 @@
         <!-- Subheader Location Sevices -->
         <div class="Location">
           <h1>Location</h1>
+          
           <v-expansion-panels>
             <v-expansion-panel>
               <v-expansion-panel-header>
                 <template v-slot:default="{ open }">
                   <v-row no-gutters>
-                    <v-col cols="4"> Address </v-col>
+                    <v-col cols="4"> City </v-col>
                     <v-col cols="8" class="text--secondary">
                       <v-fade-transition leave-absolute>
                         <span v-if="open" key="0"> </span>
@@ -115,9 +116,9 @@
               </v-expansion-panel-header>
               <v-expansion-panel-content>
                 <v-text-field
-                  v-model="address"
-                  :placeholder="this.userInfo.address"
-                  @input="setAddress"
+                  v-model="city"
+                  :placeholder="this.userInfo.city"
+                  @input="setCity"
                 ></v-text-field>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -139,6 +140,7 @@
               <v-expansion-panel-content>
                 <v-text-field
                   v-model="max_distance"
+                  :rules="maxDistanceRules"
                   :placeholder="this.userInfo.max_distance"
                   @input="setMaxDistance"
                 ></v-text-field>
@@ -215,11 +217,11 @@ export default {
           .catch(err => console.log(err))
         })
       },
-      setAddress() {
+      setCity() {
         auth.onAuthStateChanged(loggedInUser => {
           db.collection('users').doc(loggedInUser.uid)
           .update({
-            address: this.address
+            city: this.city
           })
           .catch(err => console.log(err))
         })
@@ -245,12 +247,12 @@ export default {
       phone_number: "",
       email: "",
       password: "",
-      address: "",
+      city: "",
       max_distance: "",
       phoneRules: [
         v => !!v || 'Phone number is required',
+        v => /^[0-9]+$/.test(v) || 'Phone number must only contain digits',
         v => v.length == 10 || 'Phone number must be exactly 10 digits long',
-        v => !v == /^\d+$/ || 'Phone number must only contain digits',
       ],
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -259,7 +261,11 @@ export default {
       passwordRules: [
         v => !!v || 'Password is required',
         v => v.length >= 6 || 'Password must be at least 6 characters long'
-      ]
+      ],
+      maxDistanceRules: [
+        v => !!v || 'Maximum Distance is required',
+        v => /^[0-9]+$/.test(v) || 'Phone number must only contain digits',
+      ],
     }
   },
   created() {
@@ -273,6 +279,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+  font-size: 1.8em;
 }
 
 .navbar h1 {

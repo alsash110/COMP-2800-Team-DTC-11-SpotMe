@@ -8,7 +8,7 @@
             gradient="to bottom left, #59ABF8, #84BDF2"
           ></v-img>
         </template>
-        <h1 style="color: white">Edit Info</h1>
+        <h1 style="color: white">Workout Preferences</h1>
         <v-spacer></v-spacer>
         <v-btn class="nav-btn" color="primary" rounded to="/mainsettings"
           >Done</v-btn
@@ -72,6 +72,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 1.8em;
 }
 
 .navbar h1 {
