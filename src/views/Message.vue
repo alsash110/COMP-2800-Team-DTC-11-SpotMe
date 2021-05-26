@@ -157,7 +157,16 @@ export default {
   created() {
     this.getPartnerId();
     this.getCurrentUserId();
-    this.getMessages();
+    // this.getMessages();
+    db.collection("chat-logs").where("users", "array-contains", this.userId)
+    .onSnapshot(snap => {
+      snap.forEach((doc) => {
+        if (doc.data().users.includes(this.partnerId)){
+              this.chatMessages = doc.data().messages.slice().sort((a,b) => a.time - b.time);
+              this.chatId = doc.id;
+            }
+      })
+    })
   },
 };
 </script>
