@@ -6,6 +6,8 @@ import vuetify from './plugins/vuetify'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import VueSocialSharing from 'vue-social-sharing';
+import ScrollDiv from 'vue-scroll-div';
 
 firebase.initializeApp({
   apiKey: "AIzaSyBfmIAGUvMVLnGM_FV_dthp-z7p7XWAopo",
@@ -32,7 +34,8 @@ firebase.auth().onAuthStateChanged(function (user){
     console.log("not signed in");
   }
 });
-
+Vue.use(VueSocialSharing);
+Vue.use(ScrollDiv)
 
 // firebase.auth().onAuthStateChanged(user => {
 //   console.log("user", user);

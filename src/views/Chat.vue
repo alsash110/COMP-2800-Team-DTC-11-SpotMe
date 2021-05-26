@@ -106,7 +106,7 @@ export default {
             if (this.allChats.find(chat => chat.partnerId === partneruid)){
               this.allChats.find(chat => chat.partnerId === partneruid).messages = doc.data().messages
               console.log(this.allChats);
-            } else {
+            } else if(!doc.data().hidden) {
               this.allChats.push({
                 partnerId: partneruid,
                 messages: doc.data().messages,
