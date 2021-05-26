@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class='lato-font'>
     <!-- <v-app-bar
       app
       color="primary"
@@ -7,7 +7,7 @@
     >
     </v-app-bar> -->
 
-    <v-main>
+    <v-main class="lato-font">
       <router-view/>
     </v-main>
   </v-app>
@@ -29,5 +29,8 @@ export default {
   font-family: "Lato";
   src: local("Lato"),
    url(./fonts/Lato/Lato-Regular.ttf) format("truetype");
+}
+.lato-font {
+  font-family: "Lato";
 }
 </style>
