@@ -161,7 +161,7 @@
         <br/>
         
         <v-row justify="center">
-           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date(2020,5,20).toISOString().substr(0, 10)"></v-date-picker>
+           <v-date-picker rounded v-model="age" :rules="ageRules"  :max="new Date().toISOString().substr(0, 10)"></v-date-picker>
         </v-row>
 
         <br/>
@@ -285,7 +285,7 @@
           v-model="about"
           name="input-7-4"
           label="About me"
-          counter="100"
+          counter="30"
           clearable
         ></v-textarea>
 
@@ -313,8 +313,10 @@
             <h3>Sex : {{ sex }}</h3>
             <h3>Experience : {{ experience }}</h3>
             <h3>Preferences : {{ preferences }}</h3>
-            <h5>About me : {{ about }}</h5>
-        
+            <h4>About me : {{ about }}</h4>
+            <br/>
+            <br/>
+            <br/>
 
 
               <v-row justify="center">
@@ -333,8 +335,7 @@
     </v-stepper-items>
 
   </v-stepper>
-    <v-footer height="10vw" class="blue-rectangle" color="#97CAFA" fixed>
-        </v-footer>
+
     </div> 
 </template>
 
@@ -354,7 +355,7 @@ import 'firebase/firestore'
       password: '',
       phone:'',
       name:'',
-      age:'2000-12-31',
+      age: '2000-01-01',
       sex:'Male',
       experience:'',
       preferences: [],
@@ -376,10 +377,10 @@ import 'firebase/firestore'
       ],
       ageRules: [
         v => !!v || 'Date of birth is required',
-        v => int(v.substring(0,5))>2002  || 'You must be over 19 years old to register',
+        v => int(v.substring(0,5) - new Date().getUTCFullYear())>2002  || 'You must be over 19 years old to register',
       ],
       aboutRules:[
-        v => v.length > 100 || 'About section has over 100 chars',
+        v => v.length > 30 || 'About section has over 30 chars',
       ],
       experienceRules:[
         v=> !!v || 'Experience entry required'
@@ -405,7 +406,9 @@ import 'firebase/firestore'
       },
       
        submit(){
+         if( this.validateInfo(this.email, this.password, this.phone, this.name, this.age, this.preferences, this.about)){
 
+         
         firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then( (userCred) => {
            db.collection("users").doc(userCred.user.uid).set({
              email: this.email,
@@ -433,6 +436,10 @@ import 'firebase/firestore'
           .catch( (err) => {
         alert(err.message)
       })
+         }
+         else{
+           console.log("Validation error");
+         }
       },
 
       arrayToMap(array){
@@ -445,7 +452,7 @@ import 'firebase/firestore'
       },
 
       experienceToString(exp){
-        if(exp == 0){
+        if(exp == 0 || exp == null){
           return "Beginner"
         }
         else if(exp == 1){
@@ -458,37 +465,68 @@ import 'firebase/firestore'
 
       getAge(str){
         let yob = str.split('-');
-        console.log(yob);
         let currentYear = new Date().getFullYear();
-        console.log(currentYear);
         let currentMonth = new Date().getMonth()+1;
-        console.log(currentMonth);
         let currentDay = new Date().getDate();
-        console.log(currentDay);
         let user_age = currentYear-Number(yob[0])-1;
-        console.log(user_age);
         if(currentMonth<Number(yob[1])){
-          console.log("final age "+user_age);
           return String(user_age);
         }
         else if(currentMonth>Number(yob[1])){
-          console.log("final age "+user_age+1);
           return String(user_age+1);
         }
         else{
           if(currentDay>=yob[2]){
-            console.log("final age "+user_age+1);
             return String(user_age+1);
           }
           else{
-            console.log("final age "+user_age);
             return String(user_age);
           }
         }
       }
 
+      ,
+
+      validateInfo(email, password, phone, name, age, preferences, about){
+        if(email.length<3){
+          alert("Invalid email")
+          return false
+        }
+        if(password.length < 6){
+          alert("Invalid password")
+          return false;
+        }
+        if(phone.length != 10 ||  this.isNumber(phone) ){
+          alert("Invalid phone number");
+          return false;
+        }
+        if(name.length > 20 || !this.isAllLetter(name)){
+          alert("Invalid name");
+          return false;
+        }
+        if( this.getAge(age) < 19 ){
+          alert("You must be over 19 to use the app");
+          return false;
+        }
+        if(preferences.length == 0){
+          alert("Please choose at least one workout preference")
+          return false
+        }
+        if( about.length > 30){
+        alert("The about me section should be shorter than 30 characters.");
+        return false;
+        }
+        return true;
+      },
+
+      isNumber(n){
+         return /^-?[\d.]+(?:e-?\d+)?$/.test(n.value); 
+       },
+       isAllLetter(str){ 
+      var letters = /^[A-Za-z]+$/;
+      return str.match(letters)
       }
-  
+    }
   
   }
 </script>
