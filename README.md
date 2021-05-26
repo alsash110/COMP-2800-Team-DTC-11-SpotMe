@@ -64,17 +64,17 @@ It has the following subfolders and files:
        ├──FooterJY.vue
        ├──HelloWorld.vue
        ├──HomePageCarousel.vue
-       ├──LoginForm.vue
+       ├──LoginForm.vue                     #Login form component for Login.vue
        ├──MainSettingsBottomBtns.vue
        ├──MessageBubble.vue
-       ├──SettingsFooter.vue
+       ├──SettingsFooter.vue                
        ├──SettingsInput.vue
        ├──ShowAndOverwriteInfo.vue
-       ├──SignupFooter.vue
-       ├──SignupForm.vue
+       ├──SignupFooter.vue                  #The footer used in form for Login.vue and Signup.vue
+       ├──SignupForm.vue                    #Signup form component for Signup.vue
        ├──SignupHeader.vue
        └──UserPhoto.vue
-    ├──fonts
+    ├──fonts                                #fonts
        ├──Lato-Black.ttf
        ├──Lato-BlackItalic.ttf
        ├──Lato-Bold.ttf
@@ -88,7 +88,7 @@ It has the following subfolders and files:
     ├──plugins
        └──veutify.js
     ├──router
-       └──index.js
+       └──index.js                          #Router scripts for the project
     ├──store
        └──index.js
     ├──views
@@ -97,12 +97,12 @@ It has the following subfolders and files:
        ├──Chat.vue
        ├──DisplayMatches.vue                #View for Displaying Users that match your preferences
        ├──EditInfo.vue
-       ├──Home.vue
-       ├──Login.vue
+       ├──Home.vue                          #Home page of the project
+       ├──Login.vue                         #View for user login
        ├──mainsettings.vue
        ├──Message.vue
        ├──SettingsTwo.vue
-       └──Signup.vue
+       └──Signup.vue                        #View for user signup
     ├──App.vue
     └──main.js
        
