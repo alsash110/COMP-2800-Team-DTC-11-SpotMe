@@ -91,27 +91,55 @@
                 auth.onAuthStateChanged(loggedInUser => {
                     var usersData = [];
                     var usersIds = [];
+
+                    //Get logged in user's matching preferences
+                    db.collection('users').doc(loggedInUser.uid).get()
+                    .then(doc => {
+                        this.loggedInUserPreferences = doc.data().preferences;
+                        // for(const preference in preferencesRef) {
+                        //     if(preferencesRef[preference]){
+                        //         this.loggedInUserPreferences.push(preference)
+                        //     }
+                        // }
+                    })
+                    .catch(err => console.log(err))
+
+
+                    //Display users that match logged in user preferences
                     db.collection('users').get()
                     .then(snap => {
                         snap.forEach(user => {
                             if(loggedInUser.uid !== user.id) {
+                                let displayUser = false;
                                 db.collection('users').doc(loggedInUser.uid)
                                 .get()
                                 .then( doc => {
                                     let matchedRef = doc.data().matched;
                                     let rejectedRef = doc.data().rejected;
                                     let foundUser = false;
+
+                                    //check logged in users preferences vs current snapshot of all users preferences
+                                    for(const preference in this.loggedInUserPreferences) {
+                                        if(this.loggedInUserPreferences[preference]) {
+                                            if(this.loggedInUserPreferences[preference] === user.data().preferences[preference]) {
+                                                displayUser = true;
+                                            }
+                                        }
+                                    }
+
                                     matchedRef.forEach( matchedId => {
                                         if(user.id === matchedId) {
                                             foundUser = true;
                                         }
                                     });
+
                                     rejectedRef.forEach(rejectedId => {
                                         if(user.id === rejectedId) {
                                             foundUser = true;
                                         }
                                     });
-                                    if(!foundUser) {
+
+                                    if((!foundUser) && displayUser) {
                                         usersIds.push(user.id);
                                         usersData.push(user.data());
                                         this.users = usersData;
@@ -134,7 +162,8 @@
                 users: [],
                 usersIds: [],
                 loggedInUserMatches: [],
-                loggedInUserRejections: []
+                loggedInUserRejections: [],
+                loggedInUserPreferences: []
             }
         },
         created() {

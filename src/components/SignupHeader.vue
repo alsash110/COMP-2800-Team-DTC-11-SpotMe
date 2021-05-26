@@ -6,9 +6,11 @@
            <template v-slot:img="{ props }">
              <v-img v-bind="props" gradient="to bottom left, #59ABF8, #84BDF2"></v-img>
            </template>
-            <img width="50px" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
+            <img width="50vw" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Experienced.png?alt=media&token=1a0ed8da-bb5e-4ce8-85a1-0b74d1a0d0cb" alt="">
             <h1 style="color:white">SpotMe</h1>
+            
             <v-spacer></v-spacer>
+            <v-btn rounded id="header" color="white" text to="/">Home</v-btn>
            </v-toolbar>   
 </div>
 </template>
@@ -20,7 +22,8 @@
 </script>
 
 <style scoped>
- div{
-     padding: 30px 0px;
- }
+
+#header{
+    padding: auto;
+}
 </style>

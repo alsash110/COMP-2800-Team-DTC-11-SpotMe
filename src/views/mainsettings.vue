@@ -31,7 +31,7 @@
               cols="12"
             >
               {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
-            </v-col>
+            </v-col>     
           </v-row>
         </v-footer>
       </div>
@@ -49,7 +49,7 @@ export default {
     FindMatchesHeader,
     MainSettingsBottomBtns,
     SettingsFooter
-  },
+  }
 };
 </script>
 

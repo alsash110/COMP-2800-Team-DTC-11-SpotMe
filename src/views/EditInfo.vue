@@ -15,108 +15,7 @@
         >
       </v-toolbar>
     </div>
-    <div class="Mid-Section">
-      <div class="usersettings">
-        <h1>Info Settings</h1>
-        <v-expansion-panels>
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Name </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="What is your preferred name?"
-              ></v-text-field>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Age </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="How old are you?"
-              ></v-text-field>
-              <div>
-              <!-- <v-slider
-                v-model="ex1.val"
-                :color="ex1.color"
-                :label="ex1.label"
-              ></v-slider> -->
-              </div>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-
-          <v-expansion-panel>
-            <v-expansion-panel-header>
-              <template v-slot:default="{ open }">
-                <v-row no-gutters>
-                  <v-col cols="4"> Gender </v-col>
-                  <v-col cols="8" class="text--secondary">
-                    <v-fade-transition leave-absolute>
-                      <span v-if="open" key="0"> </span>
-                      <span v-else key="1"> </span>
-                    </v-fade-transition>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-text-field
-                v-model="trip.name"
-                placeholder="What do you identify yourself as?"
-              ></v-text-field>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-
-        <div>
-          <v-textarea
-        v-model="bio"
-        auto-grow
-        filled
-        color="blue"
-        label="Bio"
-        rows="1"
-      ></v-textarea>
-        </div>
-
-        <div>
-          <v-textarea
-        v-model="interests"
-        auto-grow
-        filled
-        color="blue"
-        label="Interest Tags"
-        rows="1"
-      ></v-textarea>
-        </div>
-
-      </div>
-    </div>
+    <ShowAndOverwriteInfo :userInfo="userInfo"/>
     <div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
@@ -135,19 +34,36 @@
 
 <script>
 import DevProfile from "../components/DevProfile";
+import ShowAndOverwriteInfo from "../components/ShowAndOverwriteInfo"
+import { auth } from '@/main';
+import { db } from '@/main';
 export default {
-  data: () => ({
-    date: null,
-    trip: {
-      name: "",
-      location: null,
-      start: null,
-      end: null,
+  name: "editinfo",
+  components: {
+    ShowAndOverwriteInfo
+  },
+  methods: {
+    //Enter methods here
+    getLoggedInUser() {
+      auth.onAuthStateChanged(loggedInUser => {
+        db.collection('users').doc(loggedInUser.uid)
+        .get()
+        .then( doc => {
+          this.userInfo = doc.data();
+        })
+        .catch(err => console.log(err))
+      })
     },
-    // return: {
-    //   ex1: { label: 'color', val: 25, color: 'orange darken-3' },
-    // }
-  }),
+  },
+  data() {
+    return {
+      userInfo: {}
+    }
+  },
+  created(){
+    //Call methods that are used upon creation of life cycle
+    this.getLoggedInUser();
+  }
 };
 </script>
 
@@ -197,5 +113,13 @@ export default {
 
 .static:hover {
   opacity:0;
+}
+
+.tagGroup {
+    display: inline-flex;
+    margin: 1px;
+}
+.tag {
+    color: white;
 }
 </style>
