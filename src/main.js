@@ -8,6 +8,12 @@ import 'firebase/firestore'
 import 'firebase/auth'
 import VueSocialSharing from 'vue-social-sharing';
 import ScrollDiv from 'vue-scroll-div';
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// library.add(faUserSecret)
+// Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 firebase.initializeApp({
   apiKey: "AIzaSyBfmIAGUvMVLnGM_FV_dthp-z7p7XWAopo",
