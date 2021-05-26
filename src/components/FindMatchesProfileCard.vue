@@ -19,7 +19,7 @@
                             <v-card-text 
                             v-if="n === 1"
                             >
-                                <b>{{user.name}}</b><span> {{user.age}}</span><br/>
+                                <b>{{user.name}}</b><span> {{ getAge(user.age)}}</span><br/>
                                 {{user.quote}}
                             </v-card-text>
 
@@ -73,6 +73,26 @@
         },
         components: {
             Caroursel
+        },
+        methods:{
+            getAge(str) {
+      let yob = str.split("-");
+      let currentYear = new Date().getFullYear();
+      let currentMonth = new Date().getMonth() + 1;
+      let currentDay = new Date().getDate();
+      let user_age = currentYear - Number(yob[0]) - 1;
+      if (currentMonth < Number(yob[1])) {
+        return String(user_age);
+      } else if (currentMonth > Number(yob[1])) {
+        return String(user_age + 1);
+      } else {
+        if (currentDay >= yob[2]) {
+          return String(user_age + 1);
+        } else {
+          return String(user_age);
+        }
+      }
+    },
         }
     }
 </script>
