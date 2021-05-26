@@ -17,12 +17,16 @@
           </v-btn>
         </template>
         <v-list>
-          <v-list-item v-for="(item, index) in menuItem" :key="index">
+          <!-- <v-list-item v-for="(item, index) in menuItem" :key="index">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item> -->
+          <v-list-item @click="promptRemove">
+            <v-list-item-title>Remove</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </div>
+    <Scroll-Div height="80vh">
     <MessageBubble
       :user="userName"
       :userId="userId"
@@ -30,6 +34,7 @@
       :partner="partnerName"
       :partnerId="partnerId"
     ></MessageBubble>
+    </Scroll-Div>
     <div class="text-input-box">
       <input
         class="message-text-box"
@@ -153,11 +158,24 @@ export default {
           console.log("Error getting documents: ", error);
         });
     },
+    async promptRemove(){
+      const chatRef = db.collection('chat-logs').doc(this.chatId);
+      await chatRef.update({hidden: true})
+    }
   },
   created() {
     this.getPartnerId();
     this.getCurrentUserId();
-    this.getMessages();
+    // this.getMessages();
+    db.collection("chat-logs").where("users", "array-contains", this.userId)
+    .onSnapshot(snap => {
+      snap.forEach((doc) => {
+        if (doc.data().users.includes(this.partnerId)){
+              this.chatMessages = doc.data().messages.slice().sort((a,b) => a.time - b.time);
+              this.chatId = doc.id;
+            }
+      })
+    })
   },
 };
 </script>

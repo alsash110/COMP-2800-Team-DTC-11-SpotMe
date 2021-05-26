@@ -19,7 +19,12 @@
           {{ name }}
         </div>
         <div class="message">
-          {{ messageToDisplay }}
+          <div v-if="partnerId == lastSent"> 
+            {{ name }} : {{ messageToDisplay }}
+          </div>
+          <div v-else>
+            You : {{ messageToDisplay }}
+          </div>
         </div>
       </div>
     </v-card>
@@ -38,7 +43,6 @@ export default {
     async getCardInfo() {
         let partnerId = this.$props.chat.chat.partnerId;
         this.partnerId = partnerId;
-        console.log(this.partnerId);
         let userRef = await db
             .collection("users")
             .doc(this.partnerId)
@@ -58,6 +62,7 @@ export default {
         let sortedMessages = this.$props.chat.chat.messages.slice().sort((a,b) => b.time - a.time);
         if (sortedMessages.length > 0 ){
             this.messageToDisplay = sortedMessages[0].message;
+            this.lastSent = sortedMessages[0].sender;
         }
     },
   },
@@ -66,6 +71,7 @@ export default {
       name: "unkown",
       messageToDisplay: "You have matched!",
       partnerId: "unknown",
+      lastSent: "",
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRiccAiYldtk2kGPXAtwbN4LmiWVic890njSJhVXB92OG_TNzaIwCLGyDv4A8DDoqwdmA&usqp=CAU"
     };
   },

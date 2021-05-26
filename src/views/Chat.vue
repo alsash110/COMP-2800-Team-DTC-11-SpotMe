@@ -4,31 +4,8 @@
     <!-- <v-container v-on:scroll="onScroll" ref="chatlistContainer"> -->
     <v-container>
       <v-row no-gutters>
-        <v-col v-for="chat in allChats" :key="chat.name" cols="12">
+        <v-col v-for="chat in allChats" :key="chat.messages.length" cols="12">
             <ChatRow :chat={chat}></ChatRow>
-          <!-- <v-card
-            class="mx-auto chat-card"
-            max-width="90vw"
-            height="5em"
-            outlined
-            color="transparent"
-            @click="openchat"
-          >
-            <div class="grid-container">
-              <div class="profile-pic">
-                <img
-                  class="profile-img"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRiccAiYldtk2kGPXAtwbN4LmiWVic890njSJhVXB92OG_TNzaIwCLGyDv4A8DDoqwdmA&usqp=CAU"
-                />
-              </div>
-              <div class="name">
-                {{ chat.partnerId }}
-              </div>
-              <div class="message">
-                {{ chat.messages }}
-              </div>
-            </div>
-          </v-card> -->
         </v-col>
       </v-row>
     </v-container>
@@ -118,9 +95,28 @@ export default {
   },
   created(){
       this.$store.commit('setUid');
+      // let listochats =[];
+      db.collection("chat-logs").where("users", "array-contains", this.$store.state.user.uid)
+      .onSnapshot(snap => {
+        snap.forEach((doc) => {
+            let partneruid = doc
+              .data()
+              .users.filter((e) => e !== this.$store.state.user.uid)[0];
+            console.log(partneruid);
+            if (this.allChats.find(chat => chat.partnerId === partneruid)){
+              this.allChats.find(chat => chat.partnerId === partneruid).messages = doc.data().messages
+              console.log(this.allChats);
+            } else if(!doc.data().hidden) {
+              this.allChats.push({
+                partnerId: partneruid,
+                messages: doc.data().messages,
+              });
+            }
+          });
+      })
   },
   mounted() {
-      this.getChats();
+      // this.getChats();
   },
 };
 </script>
