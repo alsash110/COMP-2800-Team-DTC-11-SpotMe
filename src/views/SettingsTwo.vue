@@ -45,7 +45,7 @@
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-text-field
-          v-model="trip.name"
+          v-model="userInfo.phone"
           placeholder="Change your phone number!"
         ></v-text-field>
       </v-expansion-panel-content>
@@ -152,12 +152,6 @@
         </template>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <!-- Possible slider change -->
-        <!-- <v-slider
-                v-model="ex1.val"
-                :color="ex1.color"
-                :label="ex1.label"
-              ></v-slider> -->
         <v-text-field
           v-model="trip.name"
           placeholder="How far would you like to meet?"
@@ -166,8 +160,10 @@
     </v-expansion-panel>
   </v-expansion-panels>
   </div>
-            </div>
-            <div class="Privacy">
+  </div>
+
+<!-- Dialog box removal for later integration -->
+            <!-- <div class="Privacy">
                 <h1>Privacy</h1>
                   <v-row justify="center">
     <v-dialog
@@ -266,7 +262,7 @@
     </v-dialog>
   </v-row>
             </div>
-        </div>
+        </div> -->
     <div class="footer">
         <v-footer color="primary lighten-3" padless fixed>
           <v-row justify="center" no-gutters>
@@ -288,12 +284,7 @@
   export default {
     data: () => ({
       date: null,
-      trip: {
-        name: '',
-        location: null,
-        start: null,
-        end: null,
-      },
+      
     }),
     
   }
