@@ -10,9 +10,11 @@
         </template>
         <h1 style="color: white">Settings</h1>
         <v-spacer></v-spacer>
-        <v-btn class="nav-btn" color="primary" rounded to="/mainsettings"
-          >Done</v-btn
-        >
+        <v-btn class="nav-btn" 
+        color="primary" 
+        rounded to="/mainsettings"
+        
+          >Done</v-btn>
       </v-toolbar>
     </div>
     <div class="Mid-Section">
@@ -231,6 +233,10 @@ export default {
           .catch(err => console.log(err))
         })
       },
+
+      // done(){
+      //   if( this.validateInfo(this.phone_number, this.email, this.password, this.address, this.max_distance ))
+      // }
 
   },
   data() {
