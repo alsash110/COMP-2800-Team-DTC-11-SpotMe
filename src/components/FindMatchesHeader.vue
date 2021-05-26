@@ -33,7 +33,7 @@
              plain
              raised
              outlined
-             @click="goToChat"
+            :to="'/chat'"
             >
                 <v-icon>mdi-chat</v-icon>
             </v-btn>
@@ -57,9 +57,6 @@ import firebase from "firebase/app"
         name: "FindMatchesHeader",
 
         methods: {
-            goToChat: function (event) {
-                this.$router.push('chat');
-            }, 
             logout(){
                  firebase.auth().signOut();
                  this.$router.replace({ name: "Home" });

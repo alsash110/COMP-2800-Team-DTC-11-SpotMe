@@ -161,6 +161,7 @@ export default {
     async promptRemove(){
       const chatRef = db.collection('chat-logs').doc(this.chatId);
       await chatRef.update({hidden: true})
+      this.$router.push('/chat');
     }
   },
   created() {
