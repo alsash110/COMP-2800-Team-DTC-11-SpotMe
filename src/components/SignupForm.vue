@@ -100,7 +100,7 @@
             rounded
             v-model="name"
             :rules="nameRules"
-            label="Full Name (First Name Followed by Last Name)"
+            label="Enter your first name"
             required
           ></v-text-field>
 
@@ -343,7 +343,7 @@ export default {
                 phone_number: this.phone,
                 name: this.name,
                 sex: this.sex,
-                age: this.getAge(this.age),
+                age: this.age,
                 matched: [],
                 rejected: [],
                 preferences: this.arrayToMap(this.preferences),
