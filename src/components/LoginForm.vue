@@ -47,7 +47,6 @@
     >
       <v-row justify="space-around" no-gutters>
         <v-btn to="/" rounded text color="white">Home</v-btn>
-        <v-btn to="/support" rounded text color="white">Support</v-btn>
         <v-btn to="/about" rounded text color="white" depressed>About</v-btn>
         <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
           {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
