@@ -72,7 +72,7 @@ It has the following subfolders and files:
     ├──favicon-old.ico
     ├──favicon-test.ico
     ├──favicon.ico
-    └──index.html
+    └──index.html                           #The index html for the project
 ├──src
     ├──assets
     ├──components
@@ -82,19 +82,19 @@ It has the following subfolders and files:
        ├──FindMatchesFooter.vue             #Footer Component for DisplayMatches.vue
        ├──FindMatchesHeader.vue             #Header Component for DisplayMatches.vue
        ├──FindMatchesProfileCard.vue        #Profile Card Component for DisplayMatches.vue
-       ├──FooterJY.vue
-       ├──HelloWorld.vue
-       ├──HomePageCarousel.vue
+       ├──FooterJY.vue                      #Footer component for Chat vues
+       ├──HelloWorld.vue                    #A test component
+       ├──HomePageCarousel.vue              #Image carousel component for Home page
        ├──LoginForm.vue                     #Login form component for Login.vue
-       ├──MainSettingsBottomBtns.vue
-       ├──MessageBubble.vue
-       ├──SettingsFooter.vue                
-       ├──SettingsInput.vue
-       ├──ShowAndOverwriteInfo.vue
+       ├──MainSettingsBottomBtns.vue        #The bottom buttons component for Main Settings page
+       ├──MessageBubble.vue                 #Message bubble component for Chat page
+       ├──SettingsFooter.vue                #Settings footer components
+       ├──SettingsInput.vue                 #Settings input form component
+       ├──ShowAndOverwriteInfo.vue          #Settings overwrite form component for Settigns page
        ├──SignupFooter.vue                  #The footer used in form for Login.vue and Signup.vue
        ├──SignupForm.vue                    #Signup form component for Signup.vue
-       ├──SignupHeader.vue
-       └──UserPhoto.vue
+       ├──SignupHeader.vue                  #Signup header component
+       └──UserPhoto.vue                     #User profile photo component
     ├──fonts                                #fonts
        ├──Lato-Black.ttf
        ├──Lato-BlackItalic.ttf
@@ -107,25 +107,25 @@ It has the following subfolders and files:
        ├──Lato-Thin.ttf
        └──Lato-ThinItalic.ttf
     ├──plugins
-       └──veutify.js
+       └──veutify.js                        #Vuetify plugin
     ├──router
        └──index.js                          #Router scripts for the project
     ├──store
-       └──index.js
+       └──index.js                          #Firebase storage plugin
     ├──views
-       ├──About.vue
-       ├──AddPhotos.vue
-       ├──Chat.vue
+       ├──About.vue                         #About Us main Vue
+       ├──AddPhotos.vue                     #Add Photos main Vue
+       ├──Chat.vue                          #Chat window main Vue
        ├──DisplayMatches.vue                #View for Displaying Users that match your preferences
-       ├──EditInfo.vue
+       ├──EditInfo.vue                      #The main Vue component for editing info
        ├──Home.vue                          #Home page of the project
        ├──Login.vue                         #View for user login
-       ├──mainsettings.vue
-       ├──Message.vue
-       ├──SettingsTwo.vue
+       ├──mainsettings.vue                  #The main Vue component for logged in users
+       ├──Message.vue                       #The main Vue component for messaging
+       ├──SettingsTwo.vue                   #The second Vue component for Messaging
        └──Signup.vue                        #View for user signup
-    ├──App.vue
-    └──main.js
+    ├──App.vue                              #Application Vue driver
+    └──main.js                              #The main script for the project (connecting all the npm modules)
        
 
 ```
