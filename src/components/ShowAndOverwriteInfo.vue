@@ -82,7 +82,7 @@
           label="Bio"
           rows="1"
           :placeholder="userInfo.quote"
-          @input="setQuote"
+          
         ></v-textarea>
       </div>
       <v-container>
@@ -99,6 +99,17 @@
         ></v-select>
       </v-container>
     </div>
+          <v-container class="btn-container">
+            <v-spacer></v-spacer>
+            <div>
+                    <v-btn class="nav-btn" 
+                    color="primary" 
+                    
+                    @click="submit"
+                    >Done</v-btn>
+              </div>
+              <v-spacer></v-spacer>
+          </v-container>
   </div>
 </template>
 
@@ -113,6 +124,17 @@ export default {
       userInfo: Object
     },
     methods: {
+    //   getLoggedInUser() {
+    //   auth.onAuthStateChanged(loggedInUser => {
+    //     db.collection('users').doc(loggedInUser.uid)
+    //     .get()
+    //     .then( doc => {
+    //       quote: this.quote,
+    //       preferences: this.arrayToMap(this.preferences)
+    //     })
+    //     .catch(err => console.log(err))
+    //   })
+    // },
       // setName() {
       //   auth.onAuthStateChanged(loggedInUser => {
       //     db.collection('users').doc(loggedInUser.uid)
@@ -140,15 +162,15 @@ export default {
       //     .catch(err => console.log(err))
       //   })
       // },
-      setQuote() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            quote: this.quote
-          })
-          .catch(err => console.log(err))
-        })
-      },
+      // setQuote() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       quote: this.quote
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
       setPreferences() {
         auth.onAuthStateChanged(loggedInUser => {
           db.collection('users').doc(loggedInUser.uid)
@@ -167,6 +189,22 @@ export default {
         console.log(newMap);
         return newMap;
       },
+
+      // when called update fields to db
+      submit(){
+        auth.onAuthStateChanged(loggedInUser => {
+          console.log("hello world")
+          db.collection('users').doc(loggedInUser.uid)
+          .update({
+            quote: this.quote,
+          })
+          //redirects to main profile settings page
+          .then(_=> {
+            this.$router.push('/mainsettings');
+          })
+          .catch(err => console.log(err))
+        })
+      }
     },
     data() {
       return {
@@ -181,8 +219,8 @@ export default {
 </script>
 
 <style scoped>
-.navbar h1 {
-  font-size: 2em;
-}
+.btn-container {
+  display: flex;
+} 
 
 </style>

@@ -74,8 +74,6 @@
     <div class="footer">
           <v-footer class="blue-rectangle" color="primary lighten-3" padless>
             <v-row justify="center" no-gutters >
-              <v-btn text color="white">About Us</v-btn>
-              <v-btn to="/support"  text color="white">Support</v-btn>
               <v-btn to="/" text color="white">Home</v-btn>
               <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
                   {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
