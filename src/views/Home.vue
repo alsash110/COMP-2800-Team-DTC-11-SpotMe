@@ -30,35 +30,23 @@
      <div class="user-cards">
         <div class="p1">
          <h1>Let us help you with your fitness needs..</h1>
-         <v-btn
-      class="mx-1"
-      fab
-      dark
-      color="blue"
-    >
-      <v-icon dark>
-        mdi-plus
-      </v-icon>
-    </v-btn>
        </div>   
       <v-card class="mx-auto my-15" max-width="350" max-height="400px">
         <v-img height="400" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fexperienced.png?alt=media&token=c8efd4fb-18e0-4328-bfd8-9b733abe537c"></v-img>
           <v-card-text>
-          <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud."</div>
+          <div>We account for our audience from beginner, experienced, to expert. If you are experienced at the gym but just want a partner, SpotMe is the perfect app for you.</div>
         </v-card-text>
         <v-btn rounded>Learn More</v-btn>
       </v-card>
         <!-- <div class="p2">
          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+           quis nostrud exertion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
        </div>   -->
       <v-card class="mx-auto my-10" max-width="350" max-height="400px">
         <v-img height="400" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fbeginner.png?alt=media&token=f416de3f-8829-4da2-af5a-3416111d990f"></v-img>
                         <v-card-text>
-              <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud."</div>
+              <div>For people that are new to working out and have no experience, or just don't feel too motivated, SpotMe got you covered!</div>
             </v-card-text>
             <v-btn rounded>Learn More</v-btn>
        </v-card>
@@ -70,8 +58,7 @@
       <v-card class="mx-auto my-15" max-width="350" max-height="400px">
         <v-img height="400" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fexpert.png?alt=media&token=95a58690-b0ae-4d9c-97a1-ad940a4b335b"></v-img>
             <v-card-text>
-              <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud."</div>
+              <div>Are you someone that enjoys looking at your muscles? Do you enjoy going to the gym everyday but just can't find the same gym partner with the level of expertise you have? Come find a match!</div>
             </v-card-text>
             <v-btn rounded>Learn More</v-btn>
       </v-card>
@@ -113,8 +100,6 @@
         ],
         links: [
         'About Us',
-        'Learn',
-        'Support',
       ]
       }
     },
