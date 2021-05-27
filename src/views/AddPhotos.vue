@@ -17,39 +17,27 @@
             <div class="usersettings">
                 <h1>Let's make yourself look good for others!</h1>
             </div>
-           </div>
-           <v-flex>
-           <div class="PhotoList">
-             <div class="photo1">
-               <img :src="imageUrl" alt="photo1">
-             </div>
-             <div class="photo2">
-               <UserPhoto imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed" alt="photo2"/>
-             </div>
-             <div class="photo3">
-               <UserPhoto imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed" alt="photo2"/>
-             </div>
-             <div class="photo4">
-               <UserPhoto imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed" alt="photo2"/>
-             </div>
-             <div class="photo5">
-               <UserPhoto imgUrl="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed" alt="photo2"/>
-             </div>
-           </div>
-           </v-flex>
-           <v-flex>
-            <div class="photos">
-                <v-btn raised class="primary" @click="onPickFile">Upload Image</v-btn>
-                <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked">
-            </div>
-           </v-flex>
-
+           </div> 
+             <div>
+    <v-row justify="center" no-gutters>
+    <div >
+      <input type="file" @change="previewImage" accept="image/*" ref="fileInput" style="display: none">
+      <v-btn color="primary" rounded @click="onPickFile">Choose an Image</v-btn>
+    </div>  
+    <div>
+      <p>Progress: {{uploadValue.toFixed()+"%"}}
+      <progress id="progress" :value="uploadValue" max="100" ></progress></p>
+    </div>
+    <div v-if="imageData!=null">
+        <img class="preview" :src="picture">
+        <br>
+      <v-btn @click="onUpload" color="primary">Upload and Preview</v-btn>
+    </div>
+    </v-row>
+  </div>  
     <div class="footer">
           <v-footer color="primary lighten-3" padless fixed>
             <v-row justify="center" no-gutters>
-              <v-btn v-for="link in links" :key="link" color="white" text rounded class="my-2">
-                {{ link }}
-              </v-btn>
             <v-col class="primary lighten-3 py-4 text-center white--text" cols="12">
               {{ new Date().getFullYear() }} — <strong>SpotMe</strong>
             </v-col>
@@ -60,37 +48,68 @@
 </template>
 
 <script>
-  import UserPhoto from '../components/UserPhoto'
-  export default {
-    name: "Photos",
-    components: {
-      UserPhoto
+import firebase from 'firebase';
+import { auth } from '@/main';
+import { db } from '@/main';
+
+export default {
+  name: 'Upload',
+  data(){
+	return{
+      photos: [],
+      imageData: null,
+      picture: null,
+      uploadValue: 0
+	  }
+  },
+  created() {
+    this.getUserPhotos();
+  },
+  methods:{
+    previewImage(event) {
+      this.uploadValue=0;
+      this.picture=null;
+      this.imageData = event.target.files[0];
     },
-    data () {
-      return {
-        imageUrl: '',
-        image: null
+
+    getUserPhotos(){
+      auth.onAuthStateChanged(loggedInUser => {
+        db.collection('users').doc(loggedInUser.uid)
+        .get()
+        .then(doc=> {
+          this.photos = doc.data().photos
+        })
+        .catch(err => console.log(err))
+      })
+    },
+    onUpload(){
+      this.picture=null;
+
+      const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
+
+      storageRef.on(`state_changed`,snapshot=>{
+        this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      }, error=>{console.log(error.message)},
+      ()=>{this.uploadValue=100;
+
+        storageRef.snapshot.ref.getDownloadURL().then((url)=>{
+          this.picture =url;
+          this.photos.push(this.picture)
+          auth.onAuthStateChanged(loggedInUser => {
+            db.collection('users').doc(loggedInUser.uid)
+            .update({
+              "photos": this.photos
+            })
+          })
+        });
       }
+      );
     },
-  methods: {
     onPickFile() {
       this.$refs.fileInput.click()
-    },
-    onFilePicked (event) {
-      const files = event.target.files
-      let filename = files[0].name
-      if (filename.lastIndexOf('.') <= 0) {
-        return alert('Please add a valid file!')
-      }
-      const fileReader = new FileReader()
-      fileReader.addEventListener('load', ()=> {
-        this.imageUrl = fileReader.result
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
+    }
   }
-  }
-  }
+}
 </script>
 
 <style>
@@ -127,34 +146,16 @@
     margin: auto;
 }
 
-.photo1 {grid-area: photo1;}
-
-.photo2 {grid-area: photo2;}
-
-.photo3 {grid-area: photo3;}
-
-.photo4 {grid-area: photo4;}
-
-.photo5 {grid-area: photo5;}
-
-.PhotoList {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 40px 0px;
-  grid-template-areas: 
-  "photo1 photo2"
-  "photo3 photo4"
-  "photo5 photo5";
-}
-
 .PhotoList img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 9em;
-  height: 9em;
-  border-radius: 50%;
+  height: 12em;
 
 }
+
+img.preview {
+    width: 200px;
+}
+
 </style>
