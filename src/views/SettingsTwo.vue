@@ -8,13 +8,27 @@
             gradient="to bottom left, #59ABF8, #84BDF2"
           ></v-img>
         </template>
-        <h1 style="color: white">Settings</h1>
-        <v-spacer></v-spacer>
-        <v-btn class="nav-btn" 
-        color="primary" 
-        rounded to="/mainsettings"
+
+        <v-content>
+    <!--- pick-up screen height so we can center vertically -->
+          <v-container fill-height>
+            <!--- vertical and horizontal alignment -->
+            <v-layout align-center justify-center>
+              <v-flex xs6>
+                <!--- v-flex is centered now, but we need to center button inside v-flex -->
+                <div class="text-xs-center">
+                    <h1 style="color: white">Settings</h1>
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-content>
+
+        <!-- <v-layout align-center justify-center> 
+          <h1 style="color: white">Settings</h1>
+        </v-layout>
+        <v-spacer></v-spacer> -->
         
-          >Done</v-btn>
       </v-toolbar>
     </div>
     <div class="Mid-Section">
@@ -40,7 +54,7 @@
                 v-model="phone_number"
                 :rules="phoneRules"
                 :placeholder="this.userInfo.phone_number"
-                @input="setPhoneNumber"
+
               ></v-text-field>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -64,7 +78,7 @@
                 v-model="email"
                 :rules="emailRules"
                 :placeholder="this.userInfo.email"
-                @input="setEmail"
+                
               ></v-text-field>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -88,7 +102,7 @@
                 v-model="password"
                 :rules="passwordRules"
                 :placeholder="this.userInfo.password"
-                @input="setPassword"
+                
               ></v-text-field>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -118,7 +132,7 @@
                 <v-text-field
                   v-model="city"
                   :placeholder="this.userInfo.city"
-                  @input="setCity"
+                  
                 ></v-text-field>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -142,12 +156,25 @@
                   v-model="max_distance"
                   :rules="maxDistanceRules"
                   :placeholder="this.userInfo.max_distance"
-                  @input="setMaxDistance"
+                  
                 ></v-text-field>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
         </div>
+
+        
+          <v-container class="btn-container">
+            <v-spacer></v-spacer>
+                <div>
+                    <v-btn id="nav-btn" 
+                      color="primary" 
+                      
+                      @click="submit"
+                    >Done</v-btn>
+                </div>
+              <v-spacer></v-spacer>
+          </v-container>
       </div>
       
     </div>
@@ -186,59 +213,79 @@ export default {
         .get()
         .then( doc => {
           this.userInfo = doc.data();
+          this.phone_number = doc.data().phone_number,
+          this.email = doc.data().email,
+          this.password = doc.data().password,
+          this.city = doc.data().city,
+          this.max_distance = doc.data().max_distance
         })
         .catch(err => console.log(err))
       })
     },
-      setPhoneNumber() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            phone_number: this.phone_number
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setEmail() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            email: this.email
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setPassword() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            password: this.password
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setCity() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            city: this.city
-          })
-          .catch(err => console.log(err))
-        })
-      },
-      setMaxDistance() {
-        auth.onAuthStateChanged(loggedInUser => {
-          db.collection('users').doc(loggedInUser.uid)
-          .update({
-            max_distance: this.max_distance
-          })
-          .catch(err => console.log(err))
-        })
-      },
+      // setPhoneNumber() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       phone_number: this.phone_number
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setEmail() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       email: this.email
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setPassword() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       password: this.password
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setCity() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       city: this.city
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
+      // setMaxDistance() {
+      //   auth.onAuthStateChanged(loggedInUser => {
+      //     db.collection('users').doc(loggedInUser.uid)
+      //     .update({
+      //       max_distance: this.max_distance
+      //     })
+      //     .catch(err => console.log(err))
+      //   })
+      // },
 
-      // done(){
-      //   if( this.validateInfo(this.phone_number, this.email, this.password, this.address, this.max_distance ))
-      // }
+      //when called update fields to db
+      submit(){
+      auth.onAuthStateChanged(loggedInUser => {
+          db.collection('users').doc(loggedInUser.uid)
+          .update({
+            phone_number: this.phone_number,
+            email: this.email,
+            password: this.password,
+            city: this.city,
+            max_distance: this.max_distance,
+          })
+          //redirects to main profile settings page
+          .then(_=> {
+            this.$router.push('/mainsettings');
+          })
+          .catch(err => console.log(err))
+        })
+      },
 
   },
   data() {
@@ -274,7 +321,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .navbar h1 {
   margin-left: auto;
   margin-right: auto;
@@ -283,9 +330,9 @@ export default {
 }
 
 .navbar h1 {
-  margin-left: 40px;
+  /* margin-left: 0; */
   margin-top: 30px;
-}
+} 
 
 .nav-btn {
   margin-top: 35px;
@@ -322,4 +369,8 @@ export default {
 .static:hover {
   opacity: 0;
 }
+
+.btn-container {
+  display: flex;
+} 
 </style>

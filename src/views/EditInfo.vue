@@ -10,9 +10,9 @@
         </template>
         <h1 style="color: white">Workout Preferences</h1>
         <v-spacer></v-spacer>
-        <v-btn class="nav-btn" color="primary" rounded to="/mainsettings"
+        <!-- <v-btn class="nav-btn" color="primary" rounded to="/mainsettings"
           >Done</v-btn
-        >
+        > -->
       </v-toolbar>
     </div>
     <ShowAndOverwriteInfo :userInfo="userInfo"/>
@@ -43,7 +43,6 @@ export default {
     ShowAndOverwriteInfo
   },
   methods: {
-    //Enter methods here
     getLoggedInUser() {
       auth.onAuthStateChanged(loggedInUser => {
         db.collection('users').doc(loggedInUser.uid)
@@ -67,7 +66,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .navbar h1 {
   margin-left: auto;
   margin-right: auto;
