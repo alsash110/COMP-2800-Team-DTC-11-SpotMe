@@ -9,6 +9,7 @@
 * [Required installations](#Required-installations)
 * [How to use the dev server](#How-to-use-the-dev-server)
 * [Contents](#content)
+* [Test Plan](#test-plan)
 
 ## General Info
 Our application, SpotMe, provides users with the features of being able to match with other health fanatics and chatting with them on the user’s preferences. Our application gives people the freedom of being able to create a diversifiable workout schedule, and keep each other motivated.
@@ -128,3 +129,7 @@ It has the following subfolders and files:
        
 
 ```
+
+## Test Plan
+Testing is important, and at SpotMe, we take testing very seriously. We have developed a test plan that will ensure the efficient execution of the scripts of different components. The following [sheet](https://docs.google.com/spreadsheets/d/12xuC7PXhSAdk09i0HVz4YIIjYlbGX35xVCrLaHN6Exo/edit?usp=sharing) provides the test plan that the team has outlined. This sheet will be updated as the project develops. 
+
