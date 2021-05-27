@@ -91,19 +91,18 @@ export default {
     }
   },
   methods:{
-    async getUserId() {
+    async getuserimg() {
       console.log("ri")
         var user = firebase.auth().currentUser;
         if (user) {
             var doc = await db.collection("users").doc(user.uid).get()
-            console.log(doc.data())
             this.profileImg = doc.data().photos[0];
         } else {
         }
     },
   },
   created() {
-    this.getUserId()
+    this.getuserimg()
     console.log(this.profileImg)
   }
 };
