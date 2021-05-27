@@ -20,6 +20,32 @@ Technologies used for this project:
 * Vue
 * Vuetify
 * Node.js
+
+## Technologies
+Technologies used for this project:
+* HTML, CSS
+* JavaScript
+* Bootstrap 
+* Jquery
+* Vue
+* Vuetify
+* Node.js
+
+## Required installations
+1. Install Node.js
+2. Install Visual studio code IDE
+3. Install dependincies 
+   - Launch visual studio code
+   - Open "Spot-Me" folder
+   - Open terminal inside visual studio code
+   - Enter: "npm install"
+
+
+## How to use the dev server
+1. Follow the Requried installations instructions above
+2. Open "Spot-Me" folder inside visual studio code
+3. Open terminal inside visual studio code
+   - Enter: "npm run serve"
 	
 ## Content
 Content of the project folder:
