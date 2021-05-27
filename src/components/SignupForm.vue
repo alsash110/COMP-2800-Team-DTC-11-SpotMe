@@ -350,6 +350,9 @@ export default {
                 experience: this.experienceToString(this.experience),
                 quote: this.about,
                 photos: [],
+                city: "",
+                max_distance: "",
+
               });
             try {
               firebase
