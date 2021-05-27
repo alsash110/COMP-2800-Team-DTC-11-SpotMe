@@ -11,7 +11,10 @@
             src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed"
             alt=""
           /> -->
-          <v-img lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed" src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed"></v-img>
+          <v-img lazy-src="https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed"
+           :src=profileImg
+           max-height="130"
+           max-width="130"></v-img>
         </button>
       </v-row>
     </div>
@@ -62,6 +65,8 @@
 import FindMatchesHeader from "../components/FindMatchesHeader";
 import MainSettingsBottomBtns from "../components/MainSettingsBottomBtns";
 import SettingsFooter from "../components/SettingsFooter";
+import { db } from "@/main";
+import firebase from "../main";
 export default {
   name: "MainSettingsPage",
   components: {
@@ -81,8 +86,25 @@ export default {
       networks: [
         { network: 'facebook', name: 'Facebook', icon: 'fab fah fa-lg fa-facebook-f', color: '#1877f2' },
         { network: 'twitter', name: 'Twitter', icon: 'fab fah fa-lg fa-twitter', color: '#1da1f2' },
-        ]
+        ],
+      profileImg: "https://firebasestorage.googleapis.com/v0/b/group11-spot-me.appspot.com/o/Images%2Fuserprofile.png?alt=media&token=70417eff-1a9c-449d-a576-0553b7e863ed"
     }
+  },
+  methods:{
+    async getUserId() {
+      console.log("ri")
+        var user = firebase.auth().currentUser;
+        if (user) {
+            var doc = await db.collection("users").doc(user.uid).get()
+            console.log(doc.data())
+            this.profileImg = doc.data().photos[0];
+        } else {
+        }
+    },
+  },
+  created() {
+    this.getUserId()
+    console.log(this.profileImg)
   }
 };
 </script>
