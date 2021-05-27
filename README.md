@@ -51,6 +51,7 @@ Content of the project folder:
 ├──node_modules                 #installed modules from npm
 ├──public                       #publicly served folder
 ├──src                          #source files folder
+├──testing                      #Folder that contains test files
 ├──.browserslistrc
 ├──.firebasesrc
 ├──.gitignore                   #git ignore
@@ -73,6 +74,8 @@ It has the following subfolders and files:
     ├──favicon-test.ico
     ├──favicon.ico
     └──index.html                           #The index html for the project
+├──testing
+    ├──tests_v1.side                        #Selenium tests for V1.0 of the project
 ├──src
     ├──assets
     ├──components
