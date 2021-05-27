@@ -6,6 +6,8 @@
 
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [Required installations](#Required-installations)
+* [How to use the dev server](#How-to-use-the-dev-server)
 * [Contents](#content)
 
 ## General Info
@@ -13,28 +15,20 @@ Our application, SpotMe, provides users with the features of being able to match
 	
 ## Technologies
 Technologies used for this project:
+* Git
 * HTML, CSS
 * JavaScript
-* Bootstrap 
-* Jquery
-* Vue
-* Vuetify
-* Node.js
-
-## Technologies
-Technologies used for this project:
-* HTML, CSS
-* JavaScript
-* Bootstrap 
 * Jquery
 * Vue
 * Vuetify
 * Node.js
 
 ## Required installations
-1. Install Node.js
-2. Install Visual studio code IDE
-3. Install dependincies 
+1. Install git
+2. Install sourcetree
+3. Install Node.js
+4. Install Visual studio code IDE
+5. Install dependincies 
    - Launch visual studio code
    - Open "Spot-Me" folder
    - Open terminal inside visual studio code
@@ -59,7 +53,7 @@ Content of the project folder:
 ├──.browserslistrc
 ├──.firebasesrc
 ├──.gitignore                   #git ignore
-├──babel.config.js
+├──babel.config.js              #babel configuration file
 ├──firebase.json                #Firebase stuff
 ├──firestore.indexes.json       #Firebase stuff
 ├──forestore.rules              #firestore rules
