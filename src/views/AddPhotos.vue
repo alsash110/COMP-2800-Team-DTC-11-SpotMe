@@ -94,7 +94,7 @@ export default {
 
         storageRef.snapshot.ref.getDownloadURL().then((url)=>{
           this.picture =url;
-          this.photos.push(this.picture)
+          this.photos.push(url)
           auth.onAuthStateChanged(loggedInUser => {
             db.collection('users').doc(loggedInUser.uid)
             .update({
