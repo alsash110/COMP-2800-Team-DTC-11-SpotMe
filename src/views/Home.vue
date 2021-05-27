@@ -36,7 +36,7 @@
           <v-card-text>
           <div>We account for our audience from beginner, experienced, to expert. If you are experienced at the gym but just want a partner, SpotMe is the perfect app for you.</div>
         </v-card-text>
-        <v-btn rounded>Learn More</v-btn>
+        <v-btn rounded to="/about">Learn More</v-btn>
       </v-card>
         <!-- <div class="p2">
          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
@@ -48,7 +48,7 @@
                         <v-card-text>
               <div>For people that are new to working out and have no experience, or just don't feel too motivated, SpotMe got you covered!</div>
             </v-card-text>
-            <v-btn rounded>Learn More</v-btn>
+            <v-btn rounded to="/about">Learn More</v-btn>
        </v-card>
         <!-- <div class="p2">
          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
@@ -60,7 +60,7 @@
             <v-card-text>
               <div>Are you someone that enjoys looking at your muscles? Do you enjoy going to the gym everyday but just can't find the same gym partner with the level of expertise you have? Come find a match!</div>
             </v-card-text>
-            <v-btn rounded>Learn More</v-btn>
+            <v-btn rounded to="/about">Learn More</v-btn>
       </v-card>
      </div>
     
