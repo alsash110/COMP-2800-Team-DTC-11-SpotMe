@@ -80,17 +80,17 @@ It has the following subfolders and files:
     ├──assets
     ├──components
        ├──Caroursel.vue                     #Caroursel Component for DisplayMatches.vue
-       ├──ChatRow.vue
+       ├──ChatRow.vue                       #ChatRow Component for Chat.vue
        ├──DevProfile.vue                    #Developer Profile for About.vue
        ├──FindMatchesFooter.vue             #Footer Component for DisplayMatches.vue
        ├──FindMatchesHeader.vue             #Header Component for DisplayMatches.vue
        ├──FindMatchesProfileCard.vue        #Profile Card Component for DisplayMatches.vue
-       ├──FooterJY.vue                      #Footer component for Chat vues
+       ├──FooterJY.vue                      #Footer component for Chat.vue
        ├──HelloWorld.vue                    #A test component
        ├──HomePageCarousel.vue              #Image carousel component for Home page
        ├──LoginForm.vue                     #Login form component for Login.vue
        ├──MainSettingsBottomBtns.vue        #The bottom buttons component for Main Settings page
-       ├──MessageBubble.vue                 #Message bubble component for Chat page
+       ├──MessageBubble.vue                 #Message bubble component for Message.Vue
        ├──SettingsFooter.vue                #Settings footer components
        ├──SettingsInput.vue                 #Settings input form component
        ├──ShowAndOverwriteInfo.vue          #Settings overwrite form component for Settigns page
